@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KCD → Pipeline · synvert xgeeks</title>
-<meta name="description" content="Turning KCD sponsor relationships into engineering pipeline for synvert xgeeks — a dual-track, vendor-neutral business-development plan anchored to KCD Porto 2026.">
+<meta name="description" content="Turning KCD sponsor relationships into engineering pipeline for synvert xgeeks — a dual-track, many-doors, vendor-neutral business-development plan anchored to KCD Porto 2026.">
 <meta name="theme-color" content="#03161a">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,308 +16,253 @@
    KCD → Pipeline — slide deck · synvert xgeeks brand palette
    ============================================================ */
 :root {
-  --bg:       #03161a;
-  --bg-2:     #082023;
-  --bg-3:     #0d2a2e;
-  --ink:      #ffffff;
-  --ink-2:    #c7d8d4;
-  --ink-3:    #7f9591;
-  --ink-4:    #4c6562;
-  --line:     #143034;
-  --line-2:   #1f4247;
-  --accent:   #00EBB6;
-  --accent-dim:  #11b89a;
-  --accent-deep: #064a40;
-  --warm:     #ff966e;
-  --good:     #00EBB6;
-  --good-bg:  rgba(0, 235, 182, 0.12);
-  --bad:      #f87171;
-  --bad-bg:   rgba(248, 113, 113, 0.12);
-  --warn:     #fbbf24;
-  --warn-bg:  rgba(251, 191, 36, 0.12);
-
-  --display: 'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
-  --sans:    'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
-  --serif:   'Fraunces', Georgia, serif;
-  --mono:    'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
+  --ink:#ffffff; --ink-2:#c7d8d4; --ink-3:#7f9591; --ink-4:#4c6562;
+  --line:#143034; --line-2:#1f4247;
+  --accent:#00EBB6; --accent-dim:#11b89a; --accent-deep:#064a40;
+  --warm:#ff966e;
+  --good:#00EBB6; --good-bg:rgba(0,235,182,0.12);
+  --bad:#f87171; --bad-bg:rgba(248,113,113,0.12);
+  --warn:#fbbf24; --warn-bg:rgba(251,191,36,0.12);
+  --display:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --sans:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 }
-
 * { box-sizing: border-box; }
-html, body {
-  margin: 0; padding: 0;
-  background: #000; color: var(--ink);
-  font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+html, body { margin:0; padding:0; background:#000; color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
 html { scroll-behavior: smooth; }
-body { min-height: 100vh; scroll-snap-type: y mandatory; overflow-y: scroll; overscroll-behavior: contain; }
-.deck { display: block; }
+body { min-height:100vh; scroll-snap-type:y mandatory; overflow-y:scroll; overscroll-behavior:contain; }
+.deck { display:block; }
 
-/* ============== slide skeleton ============== */
-.slide {
-  position: relative; min-height: 100vh; background: var(--bg);
-  scroll-snap-align: start; scroll-snap-stop: always;
-  overflow: hidden; display: flex; flex-direction: column;
+.slide { position:relative; min-height:100vh; background:var(--bg); scroll-snap-align:start; scroll-snap-stop:always; overflow:hidden; display:flex; flex-direction:column; }
+.slide::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 1200px 800px at 8% -10%, rgba(0,235,182,0.08), transparent 60%), radial-gradient(ellipse 900px 600px at 95% 100%, rgba(0,235,182,0.05), transparent 60%); pointer-events:none; z-index:0; }
+.frame { position:relative; flex:1; padding:104px 96px 76px; display:flex; flex-direction:column; z-index:1; max-width:1500px; margin:0 auto; width:100%; }
+
+.chrome { position:absolute; top:30px; left:96px; right:96px; display:flex; justify-content:space-between; align-items:center; z-index:2; font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); }
+.chrome .dot { display:inline-block; width:6px; height:6px; background:var(--accent); border-radius:999px; margin:0 12px 2px; vertical-align:middle; box-shadow:0 0 12px rgba(0,235,182,0.6); }
+.chrome__right { display:flex; align-items:center; gap:16px; }
+.chrome__mark { font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:0.04em; text-transform:none; color:var(--ink); }
+.chrome__mark b { color:var(--accent); font-weight:600; }
+.chrome__pageno { border-left:1px solid var(--line-2); padding-left:16px; color:var(--ink-3); }
+
+.kicker { font-family:var(--mono); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:14px; margin:0 0 24px 0; }
+.kicker::before { content:''; width:32px; height:1px; background:var(--accent); }
+
+.display { font-family:var(--display); font-weight:400; line-height:0.98; letter-spacing:-0.025em; color:var(--ink); margin:0; }
+.display em, .display i { font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:-0.015em; }
+.display .light { font-weight:300; color:var(--ink-3); }
+.display .accent { color:var(--accent); }
+h1.display { font-size:clamp(40px,6.2vw,92px); }
+h2.display { font-size:clamp(30px,4.6vw,62px); }
+h3.display { font-size:clamp(22px,3vw,34px); }
+
+.subhead { font-family:var(--display); font-weight:300; font-size:clamp(17px,1.9vw,24px); line-height:1.35; color:var(--ink-2); margin:20px 0 0 0; max-width:940px; }
+.subhead em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+.subhead strong { font-weight:500; color:var(--ink); }
+
+.body-text { font-family:var(--display); font-weight:400; font-size:16px; line-height:1.6; color:var(--ink-2); max-width:880px; }
+.body-text strong { color:var(--ink); font-weight:500; }
+.body-text em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+
+.mono { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.accent-text { color:var(--accent); } .warm-text { color:var(--warm); } .muted { color:var(--ink-3); }
+
+/* plain-language note */
+.plain { font-family:var(--display); font-size:13.5px; line-height:1.5; color:var(--ink-3); border-left:2px solid var(--accent-dim); padding:4px 0 4px 14px; margin:14px 0 0; max-width:880px; }
+.plain b { color:var(--ink-2); font-weight:500; }
+
+.slide__bottom { position:absolute; bottom:30px; left:96px; right:96px; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-4); z-index:2; }
+.slide__bottom .hint { display:flex; align-items:center; gap:10px; }
+.slide__bottom .hint .arrow { display:inline-block; width:18px; height:1px; background:var(--ink-4); position:relative; }
+.slide__bottom .hint .arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-right:1px solid var(--ink-4); border-bottom:1px solid var(--ink-4); transform:rotate(-45deg); }
+
+.deck-progress { position:fixed; right:30px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:6px; font-family:var(--mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-4); }
+.deck-progress a { color:inherit; text-decoration:none; display:flex; align-items:center; gap:10px; padding:2px 0; cursor:pointer; transition:color 200ms; }
+.deck-progress a:hover { color:var(--ink-2); }
+.deck-progress a::before { content:''; width:18px; height:1px; background:var(--line-2); transition:background 200ms,width 200ms; }
+.deck-progress a.is-active { color:var(--accent); }
+.deck-progress a.is-active::before { background:var(--accent); width:30px; }
+
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.stack { display:flex; flex-direction:column; gap:16px; }
+.divider { height:1px; background:var(--line-2); margin:26px 0; }
+.divider--accent { background:linear-gradient(90deg,var(--accent),transparent); }
+
+.card { background:var(--bg-2); border:1px solid var(--line-2); padding:22px 24px; border-radius:4px; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--line-2),transparent); }
+.card .card-num { font-family:var(--display); font-weight:300; font-size:40px; line-height:0.9; color:var(--ink-4); letter-spacing:-0.02em; }
+.card .card-label { font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); margin-top:12px; font-weight:500; }
+.card .card-body { font-size:13.5px; color:var(--ink-2); line-height:1.5; margin-top:8px; }
+.card.is-accent { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.07),var(--bg-2)); }
+.card.is-accent .card-num { color:var(--accent); }
+.card.is-warm { border-color:var(--warm); background:linear-gradient(180deg,rgba(255,150,110,0.07),var(--bg-2)); }
+.card.is-warm .card-num { color:var(--warm); }
+
+.kpi { background:var(--bg-2); border:1px solid var(--line-2); padding:24px; border-radius:4px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden; }
+.kpi::after { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent 80%); }
+.kpi .kpi-label { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.kpi .kpi-value { font-family:var(--display); font-weight:400; font-size:50px; line-height:1; color:var(--ink); letter-spacing:-0.025em; margin-top:6px; }
+.kpi .kpi-value em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+.kpi .kpi-sub { font-family:var(--mono); font-size:12px; color:var(--ink-3); margin-top:4px; }
+
+.posture { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin-top:30px; }
+.posture-cell { background:var(--bg-2); border:1px solid var(--line-2); padding:24px 22px 20px; position:relative; border-radius:4px; }
+.posture-cell.is-client { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.08),var(--bg-2)); }
+.posture-cell.is-partner { border-color:var(--warm); }
+.posture-cell.is-neutral { border-color:var(--line-2); }
+.posture-cell .posture-tag { position:absolute; top:-10px; left:18px; font-family:var(--mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:2px 10px; border-radius:999px; background:var(--bg); }
+.posture-cell.is-client .posture-tag { color:var(--accent); border:1px solid var(--accent); }
+.posture-cell.is-partner .posture-tag { color:var(--warm); border:1px solid var(--warm); }
+.posture-cell.is-neutral .posture-tag { color:var(--ink-3); border:1px solid var(--line-2); }
+.posture-cell .posture-name { font-family:var(--display); font-weight:500; font-size:20px; letter-spacing:-0.01em; color:var(--ink); margin-bottom:6px; }
+.posture-cell .posture-count { font-family:var(--display); font-weight:300; font-size:12.5px; color:var(--ink-3); margin-bottom:10px; }
+.posture-cell .posture-text { font-size:13px; line-height:1.5; color:var(--ink-2); }
+.posture-cell .posture-text + .posture-text { margin-top:7px; color:var(--ink-3); }
+.posture-cell .posture-text b { color:var(--ink); font-weight:500; }
+
+.tiers { display:flex; flex-direction:column; gap:12px; margin-top:22px; }
+.tier { display:grid; grid-template-columns:120px 1fr; gap:22px; align-items:center; background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:18px 24px; }
+.tier.t1 { border-left:3px solid var(--accent); }
+.tier.t2 { border-left:3px solid var(--warm); }
+.tier.t3 { border-left:3px solid var(--ink-4); }
+.tier .tier-tag { font-family:var(--display); font-weight:500; font-size:19px; color:var(--ink); }
+.tier .tier-tag small { display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-top:4px; }
+.tier .tier-body { font-size:14px; color:var(--ink-2); line-height:1.5; }
+.tier .tier-body strong { color:var(--ink); font-weight:500; }
+
+.board { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:24px; }
+.acct { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 17px; display:flex; flex-direction:column; gap:7px; }
+.acct .acct-name { font-family:var(--display); font-weight:500; font-size:16px; color:var(--ink); }
+.acct .acct-pain { font-size:12px; color:var(--ink-2); line-height:1.45; flex:1; }
+.acct .acct-status { font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; }
+.acct .acct-status.closed { color:var(--accent); }
+.acct .acct-status.live { color:var(--warn); }
+
+/* doors grid (channels) */
+.doors { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px; }
+.door { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:18px 18px; display:flex; flex-direction:column; gap:8px; position:relative; }
+.door .door-phase { font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+.door .door-name { font-family:var(--display); font-weight:500; font-size:16px; color:var(--ink); line-height:1.2; }
+.door .door-body { font-size:12px; color:var(--ink-2); line-height:1.45; }
+.door.hot { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.06),var(--bg-2)); }
+
+/* segmentation full-table (compact) */
+.segtable { margin-top:22px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12.5px; }
+.segtable .seg-row { display:grid; grid-template-columns:150px 1fr; border-bottom:1px solid var(--line); }
+.segtable .seg-row:last-child { border-bottom:0; }
+.segtable .seg-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:12px 16px; display:flex; align-items:center; }
+.segtable .seg-h.client { color:var(--accent); } .segtable .seg-h.partner { color:var(--warm); } .segtable .seg-h.neutral { color:var(--ink-3); }
+.segtable .seg-names { padding:12px 16px; color:var(--ink-2); line-height:1.55; background:var(--bg-2); }
+.segtable .seg-names b { color:var(--ink); font-weight:500; }
+.segtable .seg-names .dual { color:var(--warm); }
+
+/* lanes (dual track) */
+.lanes { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px; }
+.lane { border:1px solid var(--line-2); border-radius:6px; padding:24px 26px; background:var(--bg-2); }
+.lane.a { border-top:3px solid var(--warm); }
+.lane.b { border-top:3px solid var(--accent); }
+.lane .lane-role { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.lane .lane-title { font-family:var(--display); font-weight:500; font-size:21px; color:var(--ink); margin:6px 0 12px; }
+.lane.a .lane-title { color:var(--warm); } .lane.b .lane-title { color:var(--accent); }
+.lane ul { margin:0; padding-left:18px; } .lane li { font-size:13.5px; color:var(--ink-2); line-height:1.5; margin-bottom:7px; }
+
+/* hand-off patterns */
+.handoff { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+.ho { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:20px 22px; }
+.ho.rec { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.06),var(--bg-2)); }
+.ho .ho-tag { font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+.ho .ho-name { font-family:var(--display); font-weight:500; font-size:17px; color:var(--ink); margin:6px 0 8px; }
+.ho .ho-body { font-size:13px; color:var(--ink-2); line-height:1.5; }
+.ho .ho-when { margin-top:10px; font-size:12px; color:var(--ink-3); }
+.ho .ho-when b { color:var(--accent); font-weight:500; }
+
+.rule-strip { margin-top:24px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.rule-strip .rule-item { border:1px solid var(--line-2); border-radius:4px; padding:15px 17px; background:var(--bg-2); }
+.rule-strip .rule-n { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.12em; }
+.rule-strip .rule-t { font-family:var(--display); font-weight:500; font-size:14px; color:var(--ink); margin-top:7px; line-height:1.35; }
+.rule-strip .rule-d { font-size:12px; color:var(--ink-3); line-height:1.45; margin-top:5px; }
+
+/* gantt */
+.gantt { margin-top:30px; border-top:1px solid var(--line-2); }
+.gantt-cols { display:grid; grid-template-columns:120px repeat(6,1fr); font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); padding:12px 0 14px; border-bottom:1px solid var(--line); }
+.gantt-cols span { text-align:center; } .gantt-cols span:first-child { text-align:left; }
+.gantt-row { display:grid; grid-template-columns:120px 1fr; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); }
+.gantt-row .gantt-lane-label { font-family:var(--display); font-weight:500; font-size:14px; }
+.gantt-row.a .gantt-lane-label { color:var(--warm); } .gantt-row.b .gantt-lane-label { color:var(--accent); }
+.gantt-track { position:relative; height:30px; }
+.bar { position:absolute; top:4px; height:22px; border-radius:4px; display:flex; align-items:center; padding:0 12px; font-size:11px; color:#03161a; font-weight:600; white-space:nowrap; overflow:hidden; }
+.bar.a { background:linear-gradient(90deg,var(--warm),#ffb594); }
+.bar.b { background:linear-gradient(90deg,var(--accent),#6ff3da); }
+.bar.ghost { background:var(--bg-3); border:1px dashed var(--line-2); color:var(--ink-3); }
+.event-flag { position:absolute; top:-8px; bottom:-8px; width:2px; background:var(--accent); }
+.event-flag span { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--accent); white-space:nowrap; }
+
+.steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; border-top:1px solid var(--line-2); margin-top:28px; }
+.step { padding:20px 18px 24px; border-right:1px solid var(--line-2); background:var(--bg-2); position:relative; display:flex; flex-direction:column; }
+.step:last-child { border-right:0; } .step:hover { background:var(--bg-3); }
+.step .step__n { font-family:var(--display); font-weight:300; font-size:32px; line-height:0.9; color:var(--accent); letter-spacing:-0.02em; }
+.step .step__title { font-family:var(--display); font-weight:500; font-size:14px; color:var(--ink); margin-top:14px; line-height:1.3; }
+.step .step__desc { font-size:12px; color:var(--ink-2); line-height:1.5; margin-top:9px; }
+
+.agent { display:grid; grid-template-columns:50px 1fr; gap:18px; padding:14px 0; border-top:1px solid var(--line); align-items:start; }
+.agent:first-child { border-top:0; }
+.agent__num { font-family:var(--display); font-weight:300; font-size:28px; color:var(--accent); line-height:1; letter-spacing:-0.02em; }
+.agent__name { font-family:var(--display); font-weight:500; font-size:16px; color:var(--ink); margin-bottom:3px; }
+.agent__name .ph { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-left:10px; }
+.agent__desc { font-size:13px; color:var(--ink-2); line-height:1.5; }
+
+.pull-quote { font-family:var(--display); font-weight:300; font-size:clamp(26px,3.7vw,46px); line-height:1.15; letter-spacing:-0.02em; color:var(--ink); max-width:1120px; margin:0; }
+.pull-quote em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+
+.cover-slot { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
+.cover-meta { font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:16px; flex-wrap:wrap; }
+.cover-meta span + span::before { content:'·'; margin-right:16px; color:var(--ink-4); }
+.tag-row { display:grid; grid-template-columns:repeat(5,1fr); gap:15px; margin-top:30px; }
+.tag-row .tag { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:17px 19px; }
+.tag .tag-head { font-family:var(--display); font-weight:500; font-size:14px; color:var(--ink); margin-bottom:6px; }
+.tag .tag-body { font-size:12px; color:var(--ink-3); line-height:1.5; }
+
+/* message examples */
+.msgwrap { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px; }
+.msg { border-left:2px solid var(--accent); background:var(--bg-2); padding:14px 20px; border-radius:0 4px 4px 0; margin-bottom:13px; }
+.msg .msg-label { font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
+.msg .msg-text { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--ink-2); line-height:1.5; }
+.msg .msg-text b { font-style:normal; color:var(--ink); }
+.redline { border-left-color:var(--bad); }
+.redline .msg-label { color:var(--bad); }
+.redline .msg-text { font-style:normal; font-family:var(--display); }
+
+.fade-up { opacity:0; transform:translateY(18px); transition:opacity 700ms cubic-bezier(0.2,0.7,0.2,1),transform 700ms cubic-bezier(0.2,0.7,0.2,1); }
+.fade-up.in { opacity:1; transform:translateY(0); }
+.fade-up.d1 { transition-delay:90ms; } .fade-up.d2 { transition-delay:180ms; } .fade-up.d3 { transition-delay:270ms; } .fade-up.d4 { transition-delay:360ms; }
+
+.alt-view { position:fixed; left:32px; bottom:24px; z-index:50; font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; padding:6px 12px; border:1px solid var(--line-2); border-radius:999px; background:rgba(3,22,26,0.6); backdrop-filter:blur(8px); transition:color 180ms,border-color 180ms; }
+.alt-view:hover { color:var(--accent); border-color:var(--accent); }
+
+@media (max-width:1100px) {
+  .frame { padding:92px 48px 66px; }
+  .chrome, .slide__bottom { left:48px; right:48px; }
+  .grid-2, .lanes, .msgwrap { grid-template-columns:1fr; gap:26px; }
+  .grid-3, .posture, .handoff { grid-template-columns:1fr; }
+  .grid-4, .board, .doors, .rule-strip { grid-template-columns:1fr 1fr; }
+  .steps, .tag-row { grid-template-columns:1fr; }
+  .step { border-right:0; border-bottom:1px solid var(--line-2); }
+  .gantt-cols, .gantt-row { grid-template-columns:90px 1fr; }
+  .gantt-cols span:not(:first-child) { display:none; }
+  .segtable .seg-row { grid-template-columns:110px 1fr; }
+  .deck-progress { display:none; }
 }
-.slide::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 1200px 800px at 8% -10%, rgba(0, 235, 182, 0.08), transparent 60%),
-    radial-gradient(ellipse 900px 600px at 95% 100%, rgba(0, 235, 182, 0.05), transparent 60%);
-  pointer-events: none; z-index: 0;
+@media (max-width:700px) {
+  .frame { padding:80px 22px 56px; }
+  .chrome, .slide__bottom { left:22px; right:22px; font-size:10px; }
+  .board, .grid-4, .doors, .rule-strip, .tag-row { grid-template-columns:1fr; }
+  .tier { grid-template-columns:1fr; gap:8px; }
+  .alt-view { left:16px; bottom:16px; }
 }
-.frame {
-  position: relative; flex: 1; padding: 110px 96px 80px;
-  display: flex; flex-direction: column; z-index: 1;
-  max-width: 1500px; margin: 0 auto; width: 100%;
-}
-
-/* ============== chrome ============== */
-.chrome {
-  position: absolute; top: 30px; left: 96px; right: 96px;
-  display: flex; justify-content: space-between; align-items: center;
-  z-index: 2; font-family: var(--mono); font-size: 12px;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
-}
-.chrome .dot {
-  display: inline-block; width: 6px; height: 6px; background: var(--accent);
-  border-radius: 999px; margin: 0 12px 2px; vertical-align: middle;
-  box-shadow: 0 0 12px rgba(0, 235, 182, 0.6);
-}
-.chrome__right { display: flex; align-items: center; gap: 16px; }
-.chrome__mark { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
-.chrome__mark b { color: var(--accent); font-weight: 600; }
-.chrome__pageno { border-left: 1px solid var(--line-2); padding-left: 16px; color: var(--ink-3); }
-
-/* ============== type ============== */
-.kicker {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--accent);
-  display: inline-flex; align-items: center; gap: 14px; margin: 0 0 28px 0;
-}
-.kicker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
-
-.display { font-family: var(--display); font-weight: 400; line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin: 0; }
-.display em, .display i { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.015em; }
-.display .light { font-weight: 300; color: var(--ink-3); }
-.display .accent { color: var(--accent); }
-
-h1.display { font-size: clamp(40px, 6.2vw, 92px); }
-h2.display { font-size: clamp(32px, 5vw, 68px); }
-h3.display { font-size: clamp(22px, 3vw, 34px); }
-
-.subhead { font-family: var(--display); font-weight: 300; font-size: clamp(18px, 2vw, 25px); line-height: 1.35; color: var(--ink-2); margin: 22px 0 0 0; max-width: 920px; }
-.subhead em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ink); }
-.subhead strong { font-weight: 500; color: var(--ink); }
-
-.body-text { font-family: var(--display); font-weight: 400; font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 760px; }
-.body-text strong { color: var(--ink); font-weight: 500; }
-.body-text em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ink); }
-
-.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.accent-text { color: var(--accent); }
-.warm-text { color: var(--warm); }
-.muted { color: var(--ink-3); }
-
-code, .code-inline {
-  font-family: var(--mono); font-size: 0.86em; background: var(--bg-3);
-  border: 1px solid var(--line-2); padding: 1px 6px; border-radius: 3px; color: var(--ink);
-}
-
-/* ============== bottom marker ============== */
-.slide__bottom {
-  position: absolute; bottom: 32px; left: 96px; right: 96px;
-  display: flex; justify-content: space-between; align-items: flex-end;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--ink-4); z-index: 2;
-}
-.slide__bottom .hint { display: flex; align-items: center; gap: 10px; }
-.slide__bottom .hint .arrow { display: inline-block; width: 18px; height: 1px; background: var(--ink-4); position: relative; }
-.slide__bottom .hint .arrow::after { content: ''; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-right: 1px solid var(--ink-4); border-bottom: 1px solid var(--ink-4); transform: rotate(-45deg); }
-
-/* ============== progress rail ============== */
-.deck-progress {
-  position: fixed; right: 32px; top: 50%; transform: translateY(-50%); z-index: 50;
-  display: flex; flex-direction: column; gap: 7px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-4);
-}
-.deck-progress a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; padding: 3px 0; cursor: pointer; transition: color 200ms; }
-.deck-progress a:hover { color: var(--ink-2); }
-.deck-progress a::before { content: ''; width: 20px; height: 1px; background: var(--line-2); transition: background 200ms, width 200ms; }
-.deck-progress a.is-active { color: var(--accent); }
-.deck-progress a.is-active::before { background: var(--accent); width: 32px; }
-
-/* ============== layout helpers ============== */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.grid-3-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 56px; align-items: start; }
-.row { display: flex; gap: 16px; align-items: stretch; }
-.stack { display: flex; flex-direction: column; gap: 18px; }
-.divider { height: 1px; background: var(--line-2); margin: 28px 0; }
-.divider--accent { background: linear-gradient(90deg, var(--accent), transparent); }
-.spacer { flex: 1; }
-
-/* ============== cards ============== */
-.card { background: var(--bg-2); border: 1px solid var(--line-2); padding: 24px 26px; border-radius: 4px; position: relative; overflow: hidden; }
-.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--line-2), transparent); }
-.card .card-num { font-family: var(--display); font-weight: 300; font-size: 44px; line-height: 0.9; color: var(--ink-4); letter-spacing: -0.02em; }
-.card .card-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-top: 14px; font-weight: 500; }
-.card .card-body { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin-top: 8px; }
-.card.is-accent { border-color: var(--accent-dim); background: linear-gradient(180deg, rgba(0, 235, 182, 0.07), var(--bg-2)); }
-.card.is-accent .card-num { color: var(--accent); }
-.card.is-warm { border-color: var(--warm); background: linear-gradient(180deg, rgba(255, 150, 110, 0.07), var(--bg-2)); }
-.card.is-warm .card-num { color: var(--warm); }
-
-/* KPI */
-.kpi { background: var(--bg-2); border: 1px solid var(--line-2); padding: 26px 26px; border-radius: 4px; display: flex; flex-direction: column; gap: 6px; position: relative; overflow: hidden; }
-.kpi::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent 80%); }
-.kpi .kpi-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
-.kpi .kpi-value { font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1; color: var(--ink); letter-spacing: -0.025em; margin-top: 6px; }
-.kpi .kpi-value em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
-.kpi .kpi-sub { font-family: var(--mono); font-size: 12px; color: var(--ink-3); margin-top: 4px; }
-
-/* posture / columns */
-.posture { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 36px; }
-.posture-cell { background: var(--bg-2); border: 1px solid var(--line-2); padding: 26px 24px 22px; position: relative; border-radius: 4px; }
-.posture-cell.is-client { border-color: var(--accent-dim); background: linear-gradient(180deg, rgba(0, 235, 182, 0.08), var(--bg-2)); }
-.posture-cell.is-partner { border-color: var(--warm); }
-.posture-cell.is-neutral { border-color: var(--line-2); }
-.posture-cell .posture-tag { position: absolute; top: -10px; left: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; padding: 2px 10px; border-radius: 999px; background: var(--bg); }
-.posture-cell.is-client .posture-tag { color: var(--accent); border: 1px solid var(--accent); }
-.posture-cell.is-partner .posture-tag { color: var(--warm); border: 1px solid var(--warm); }
-.posture-cell.is-neutral .posture-tag { color: var(--ink-3); border: 1px solid var(--line-2); }
-.posture-cell .posture-name { font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px; }
-.posture-cell .posture-count { font-family: var(--display); font-weight: 300; font-size: 13px; color: var(--ink-3); margin-bottom: 12px; }
-.posture-cell .posture-text { font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }
-.posture-cell .posture-text + .posture-text { margin-top: 8px; color: var(--ink-3); }
-
-/* tier rows */
-.tiers { display: flex; flex-direction: column; gap: 14px; margin-top: 30px; }
-.tier { display: grid; grid-template-columns: 130px 1fr; gap: 24px; align-items: center; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 20px 26px; position: relative; }
-.tier.t1 { border-left: 3px solid var(--accent); }
-.tier.t2 { border-left: 3px solid var(--warm); }
-.tier.t3 { border-left: 3px solid var(--ink-4); }
-.tier .tier-tag { font-family: var(--display); font-weight: 500; font-size: 20px; color: var(--ink); }
-.tier .tier-tag small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
-.tier .tier-body { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
-.tier .tier-body strong { color: var(--ink); font-weight: 500; }
-
-/* board grid (priority accounts) */
-.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 30px; }
-.acct { background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 18px 18px; display: flex; flex-direction: column; gap: 8px; }
-.acct .acct-name { font-family: var(--display); font-weight: 500; font-size: 17px; color: var(--ink); }
-.acct .acct-pain { font-size: 12.5px; color: var(--ink-2); line-height: 1.45; flex: 1; }
-.acct .acct-status { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
-.acct .acct-status.closed { color: var(--accent); }
-.acct .acct-status.live { color: var(--warn); }
-
-/* dual-track lanes */
-.lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 30px; }
-.lane { border: 1px solid var(--line-2); border-radius: 6px; padding: 26px 28px; background: var(--bg-2); }
-.lane.a { border-top: 3px solid var(--warm); }
-.lane.b { border-top: 3px solid var(--accent); }
-.lane .lane-role { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
-.lane .lane-title { font-family: var(--display); font-weight: 500; font-size: 22px; color: var(--ink); margin: 6px 0 14px; }
-.lane.a .lane-title { color: var(--warm); }
-.lane.b .lane-title { color: var(--accent); }
-.lane ul { margin: 0; padding-left: 18px; }
-.lane li { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px; }
-.rule-strip { margin-top: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.rule-strip .rule-item { border: 1px solid var(--line-2); border-radius: 4px; padding: 16px 18px; background: var(--bg-2); }
-.rule-strip .rule-n { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.12em; }
-.rule-strip .rule-t { font-family: var(--display); font-weight: 500; font-size: 14.5px; color: var(--ink); margin-top: 8px; line-height: 1.35; }
-.rule-strip .rule-d { font-size: 12.5px; color: var(--ink-3); line-height: 1.45; margin-top: 6px; }
-
-/* timeline / gantt */
-.gantt { margin-top: 36px; border-top: 1px solid var(--line-2); }
-.gantt-cols { display: grid; grid-template-columns: 120px repeat(6, 1fr); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 12px 0 14px; border-bottom: 1px solid var(--line); }
-.gantt-cols span { text-align: center; }
-.gantt-cols span:first-child { text-align: left; }
-.gantt-row { display: grid; grid-template-columns: 120px 1fr; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
-.gantt-row .gantt-lane-label { font-family: var(--display); font-weight: 500; font-size: 14px; }
-.gantt-row.a .gantt-lane-label { color: var(--warm); }
-.gantt-row.b .gantt-lane-label { color: var(--accent); }
-.gantt-track { position: relative; height: 30px; }
-.bar { position: absolute; top: 4px; height: 22px; border-radius: 4px; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: #03161a; font-weight: 600; white-space: nowrap; overflow: hidden; }
-.bar.a { background: linear-gradient(90deg, var(--warm), #ffb594); }
-.bar.b { background: linear-gradient(90deg, var(--accent), #6ff3da); }
-.bar.ghost { background: var(--bg-3); border: 1px dashed var(--line-2); color: var(--ink-3); }
-.event-flag { position: absolute; top: -8px; bottom: -8px; width: 2px; background: var(--accent); }
-.event-flag span { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--accent); white-space: nowrap; }
-
-/* steps */
-.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--line-2); margin-top: 32px; }
-.step { padding: 22px 20px 26px; border-right: 1px solid var(--line-2); background: var(--bg-2); position: relative; display: flex; flex-direction: column; }
-.step:last-child { border-right: 0; }
-.step:hover { background: var(--bg-3); }
-.step .step__n { font-family: var(--display); font-weight: 300; font-size: 34px; line-height: 0.9; color: var(--accent); letter-spacing: -0.02em; }
-.step .step__title { font-family: var(--display); font-weight: 500; font-size: 14px; color: var(--ink); margin-top: 16px; line-height: 1.3; }
-.step .step__desc { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin-top: 10px; }
-
-/* channel agent list */
-.agent { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); align-items: start; }
-.agent:first-child { border-top: 0; }
-.agent__num { font-family: var(--display); font-weight: 300; font-size: 30px; color: var(--accent); line-height: 1; letter-spacing: -0.02em; }
-.agent__name { font-family: var(--display); font-weight: 500; font-size: 17px; color: var(--ink); margin-bottom: 4px; }
-.agent__desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
-
-/* pull-quote */
-.pull-quote { font-family: var(--display); font-weight: 300; font-size: clamp(28px, 4vw, 50px); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 1100px; margin: 0; }
-.pull-quote em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
-
-/* cover meta + tag-row */
-.cover-slot { margin-top: auto; display: flex; flex-direction: column; gap: 16px; }
-.cover-meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); display: flex; gap: 16px; flex-wrap: wrap; }
-.cover-meta span + span::before { content: '·'; margin-right: 16px; color: var(--ink-4); }
-.tag-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 36px; }
-.tag-row .tag { background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 18px 20px; }
-.tag .tag-head { font-family: var(--display); font-weight: 500; font-size: 14.5px; color: var(--ink); margin-bottom: 6px; }
-.tag .tag-body { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
-
-/* message example */
-.msg { border-left: 2px solid var(--accent); background: var(--bg-2); padding: 16px 22px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
-.msg .msg-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-.msg .msg-text { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink-2); line-height: 1.5; }
-.redline { border-left-color: var(--bad); }
-.redline .msg-label { color: var(--bad); }
-.redline .msg-text { font-style: normal; font-family: var(--display); }
-
-/* fade-in */
-.fade-up { opacity: 0; transform: translateY(18px); transition: opacity 700ms cubic-bezier(0.2,0.7,0.2,1), transform 700ms cubic-bezier(0.2,0.7,0.2,1); }
-.fade-up.in { opacity: 1; transform: translateY(0); }
-.fade-up.d1 { transition-delay: 100ms; } .fade-up.d2 { transition-delay: 200ms; }
-.fade-up.d3 { transition-delay: 300ms; } .fade-up.d4 { transition-delay: 400ms; }
-
-/* alt-view link */
-.alt-view { position: fixed; left: 32px; bottom: 24px; z-index: 50; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(3, 22, 26, 0.6); backdrop-filter: blur(8px); transition: color 180ms, border-color 180ms; }
-.alt-view:hover { color: var(--accent); border-color: var(--accent); }
-
-/* responsive */
-@media (max-width: 1100px) {
-  .frame { padding: 96px 48px 70px; }
-  .chrome, .slide__bottom { left: 48px; right: 48px; }
-  .grid-2, .grid-3-1, .lanes { grid-template-columns: 1fr; gap: 28px; }
-  .grid-3, .posture { grid-template-columns: 1fr; }
-  .grid-4, .board, .rule-strip { grid-template-columns: 1fr 1fr; }
-  .steps, .tag-row { grid-template-columns: 1fr; }
-  .step { border-right: 0; border-bottom: 1px solid var(--line-2); }
-  .gantt-cols, .gantt-row { grid-template-columns: 90px 1fr; }
-  .gantt-cols span:not(:first-child) { display: none; }
-  .deck-progress { display: none; }
-}
-@media (max-width: 700px) {
-  .frame { padding: 84px 22px 60px; }
-  .chrome, .slide__bottom { left: 22px; right: 22px; font-size: 10px; }
-  .board, .grid-4, .rule-strip, .tag-row { grid-template-columns: 1fr; }
-  .tier { grid-template-columns: 1fr; gap: 10px; }
-  .alt-view { left: 16px; bottom: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .fade-up { transition: none; opacity: 1; transform: none; }
-}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .fade-up { transition:none; opacity:1; transform:none; } }
 </style>
 </head>
 <body>
@@ -340,6 +285,7 @@ code, .code-inline {
   <a href="#s13" data-target="s13"><span>013</span></a>
   <a href="#s14" data-target="s14"><span>014</span></a>
   <a href="#s15" data-target="s15"><span>015</span></a>
+  <a href="#s16" data-target="s16"><span>016</span></a>
 </nav>
 
 <main class="deck">
@@ -348,7 +294,7 @@ code, .code-inline {
 <section class="slide" id="s1">
   <div class="chrome">
     <div class="chrome__left">KCD → PIPELINE <span class="dot"></span> BUSINESS DEVELOPMENT PLAN</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">001 / 015</span></div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">001 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">Internal strategy · Leadership brief</p>
@@ -357,57 +303,52 @@ code, .code-inline {
       relationships into<br>
       <em>engineering</em> <span class="accent">pipeline.</span>
     </h1>
-    <p class="subhead fade-up d2">We organise KCD Porto. That role has handed us warm relationships with 60+ cloud-native companies. This is the plan to convert them into business for synvert xgeeks — <strong>safely, on neutral ground, without ever risking the sponsorship.</strong></p>
+    <p class="subhead fade-up d2">We organise KCD Porto. That role has handed us warm relationships with 60+ cloud-native companies. This is the plan to open business conversations with them — <strong>across many doors, before, during and after the event, without ever risking the sponsorship.</strong></p>
     <div class="cover-slot fade-up d3">
-      <div class="cover-meta">
-        <span>15 slides</span><span>~10 minute read</span><span>Anchor: KCD Porto 2026 · Nov 19–20</span>
-      </div>
+      <div class="cover-meta"><span>16 slides</span><span>~10 minute read</span><span>Anchor: KCD Porto 2026 · Nov 19–20</span></div>
     </div>
   </div>
-  <div class="slide__bottom">
-    <span>Scroll, arrow keys, or click the index to navigate</span>
-    <span class="hint">Begin <span class="arrow"></span></span>
-  </div>
+  <div class="slide__bottom"><span>Scroll, arrow keys, or click the index to navigate</span><span class="hint">Begin <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 002 The opportunity ============ -->
+<!-- ============ 002 Opportunity / so-what ============ -->
 <section class="slide" id="s2">
   <div class="chrome">
     <div class="chrome__left">THE OPPORTUNITY <span class="dot"></span> SO WHAT</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">002 / 015</span></div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">002 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">Read this slide if you read nothing else</p>
     <h2 class="display fade-up d1">A warm book of business <em>we already own.</em></h2>
-    <p class="subhead fade-up d2">The same companies that sponsor KCD are product and enterprise engineering orgs — exactly who buys nearshore cloud-native, platform, data &amp; AI engineering. We have the relationships. We have not yet monetised them.</p>
-    <div class="grid-4 fade-up d3" style="margin-top:54px;">
+    <p class="subhead fade-up d2">The same companies that sponsor KCD are the product and enterprise engineering orgs that buy nearshore cloud, platform, data &amp; AI engineering — which is what xgeeks sells. We have the relationships. We haven't yet turned them into business.</p>
+    <div class="grid-4 fade-up d3" style="margin-top:48px;">
       <div class="kpi"><span class="kpi-label">Sponsor universe</span><span class="kpi-value">60+</span><span class="kpi-sub">cloud-native companies tracked</span></div>
       <div class="kpi"><span class="kpi-label">Closed 2025</span><span class="kpi-value"><em>~€59K</em></span><span class="kpi-sub">14 sponsors · ~€33K in 2024</span></div>
       <div class="kpi"><span class="kpi-label">Returning sponsors</span><span class="kpi-value">~20</span><span class="kpi-sub">warmest possible doors</span></div>
       <div class="kpi"><span class="kpi-label">Target return</span><span class="kpi-value"><em>≥4:1</em></span><span class="kpi-sub">pipeline-to-cost, 6–12 mo</span></div>
     </div>
-    <div class="card is-accent fade-up d4" style="margin-top:26px;">
-      <div class="card-body" style="font-size:16px;"><strong style="color:var(--ink);">The recommendation —</strong> run a deliberate <strong style="color:var(--accent);">dual-track</strong> motion: keep securing 2026 sponsorships (Role A), and in parallel open commercial conversations with the right sponsors (Role B) — using the two KCD dinners as the core asset, wrapped in a multi-channel ABM cadence. Measure on <strong style="color:var(--ink);">influenced pipeline</strong>, never lead volume.</div>
+    <div class="card is-accent fade-up d4" style="margin-top:22px;">
+      <div class="card-body" style="font-size:15.5px;"><strong style="color:var(--ink);">The recommendation —</strong> run a deliberate <strong style="color:var(--accent);">dual-track</strong> motion: keep securing 2026 sponsorships (Fábio, organizer), and in parallel open commercial conversations (a separate xgeeks business voice) across <strong style="color:var(--ink);">many channels — email &amp; LinkedIn before the event, our booth and the dinners during it, meetups and our ongoing logistics relationship year-round.</strong> Measure on <strong style="color:var(--ink);">€ of pipeline influenced</strong>, never contact counts.</div>
     </div>
   </div>
-  <div class="slide__bottom"><span>002 · The opportunity</span><span class="hint">Why the dinners <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>002 · The opportunity</span><span class="hint">The insight <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 003 The insight ============ -->
+<!-- ============ 003 Strategic insight (reframed) ============ -->
 <section class="slide" id="s3">
   <div class="chrome">
-    <div class="chrome__left">THE INSIGHT <span class="dot"></span> WHERE PIPELINE IS REALLY MADE</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">003 / 015</span></div>
+    <div class="chrome__left">THE INSIGHT <span class="dot"></span> HOW PIPELINE IS REALLY OPENED</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">003 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">The single strategic insight</p>
-    <p class="pull-quote fade-up d1">The booth and the talk are visibility. The <em>dinner table</em> is where qualified pipeline is engineered.</p>
-    <div class="grid-3 fade-up d3" style="margin-top:56px;">
-      <div class="card is-accent"><div class="card-num">€0.5–2M</div><div class="card-label">Pipeline per dinner</div><div class="card-body">A tight executive dinner of 10–20 named accounts, with fast follow-up, outperforms a hall of thousands.</div></div>
-      <div class="card"><div class="card-num">5–8</div><div class="card-label">Buying signals / dinner</div><div class="card-body">With a real playbook vs. 1–2 ad-hoc. Meetings booked rise from 1–3 to 8–14 per event.</div></div>
-      <div class="card"><div class="card-num">2</div><div class="card-label">Rooms we control</div><div class="card-body">The speaker dinner &amp; guest dinner are the highest-value BD assets we hold — worth more than booth or stage.</div></div>
+    <p class="pull-quote fade-up d1">We hold trusted access to a room full of our exact buyers. Doors open by <em>working that access</em> — before, during and after KCD — not at one big moment.</p>
+    <div class="grid-3 fade-up d3" style="margin-top:50px;">
+      <div class="card is-accent"><div class="card-num">Before</div><div class="card-label">The biggest window</div><div class="card-body">Email, LinkedIn and our existing logistics conversation warm accounts weeks ahead — this is where most meetings are really booked.</div></div>
+      <div class="card"><div class="card-num">During</div><div class="card-label">Many touchpoints</div><div class="card-body">Our booth, walking their booths, the speaker &amp; guest dinners, hallway conversations. The dinners are one valuable asset here — not the whole plan.</div></div>
+      <div class="card is-warm"><div class="card-num">After</div><div class="card-label">Where deals mature</div><div class="card-body">Fast, personal follow-up; meetups year-round; opportunities that close over 6–18 months. KCD opens the door; it doesn't close the deal in the room.</div></div>
     </div>
-    <p class="body-text fade-up d4" style="margin-top:28px;">Best-in-class B2B operators are shifting budget away from big-stage activations toward small, curated rooms. The dinners are relational and <em>off-stage</em> — which is also exactly why they never touch KCD's vendor-neutral program.</p>
+    <p class="body-text fade-up d4" style="margin-top:26px;">It stays on neutral ground: relationship-building, not selling from the stage. That neutrality is exactly what makes the access valuable.</p>
   </div>
   <div class="slide__bottom"><span>003 · The insight</span><span class="hint">The safety rule <span class="arrow"></span></span></div>
 </section>
@@ -416,155 +357,270 @@ code, .code-inline {
 <section class="slide" id="s4">
   <div class="chrome">
     <div class="chrome__left">THE RED LINE <span class="dot"></span> TWO HATS, NO COLLISION</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">004 / 015</span></div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">004 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">How we do both jobs at once — safely</p>
-    <h2 class="display fade-up d1">Sponsorship first. <em>Business second.</em> Never the two confused.</h2>
+    <h2 class="display fade-up d1">Sponsorship first. <em>Business second.</em> Never confused.</h2>
     <div class="lanes fade-up d2">
       <div class="lane a">
-        <div class="lane-role">Role A · Organizer voice</div>
+        <div class="lane-role">Track A · Organizer voice — Fábio</div>
         <div class="lane-title">Secure KCD 2026 sponsorships</div>
         <ul>
           <li>Renew returning sponsors; convert the live pipeline.</li>
-          <li>Owned by the event team (Fábio &amp; co.).</li>
-          <li>This relationship is sacred — it comes first, always.</li>
+          <li>Fábio owns this and stays purely the organizer — that relationship stays clean.</li>
+          <li>It comes first, always. Never pressured by a sales ask.</li>
         </ul>
       </div>
       <div class="lane b">
-        <div class="lane-role">Role B · xgeeks business voice</div>
+        <div class="lane-role">Track B · xgeeks business voice — not Fábio</div>
         <div class="lane-title">Open engineering conversations</div>
         <ul>
           <li>Opens only once sponsorship is closed or clearly on track.</li>
-          <li>Owned by a separate senior delivery/BD voice.</li>
-          <li>Peer-to-peer, off-stage, no pitch in the room.</li>
+          <li>Owned by a separate voice (e.g. Ivan / a sales-eng lead, or a manager).</li>
+          <li>Peer-to-peer, curiosity-first, no pitch in the room.</li>
         </ul>
       </div>
     </div>
     <div class="rule-strip fade-up d3">
-      <div class="rule-item"><div class="rule-n">01</div><div class="rule-t">Sequence &amp; do no harm</div><div class="rule-d">Never open BD with an account mid-negotiation.</div></div>
+      <div class="rule-item"><div class="rule-n">01</div><div class="rule-t">Sequence &amp; do no harm</div><div class="rule-d">Never open BD with an account mid-negotiation on its sponsorship.</div></div>
       <div class="rule-item"><div class="rule-n">02</div><div class="rule-t">Never pay-to-play</div><div class="rule-d">Sponsoring ≠ business; business ≠ sponsorship perks. Either direction.</div></div>
-      <div class="rule-item"><div class="rule-n">03</div><div class="rule-t">Separate personas</div><div class="rule-d">Organizer voice ≠ the voice that sells engineering.</div></div>
-      <div class="rule-item"><div class="rule-n">04</div><div class="rule-t">Brand is host, not hero</div><div class="rule-d">KCD stays vendor-neutral. That neutrality is what makes the access valuable.</div></div>
+      <div class="rule-item"><div class="rule-n">03</div><div class="rule-t">Separate the voices</div><div class="rule-d">Fábio the organizer ≠ the person who sells engineering.</div></div>
+      <div class="rule-item"><div class="rule-n">04</div><div class="rule-t">Brand is host, not hero</div><div class="rule-d">KCD stays vendor-neutral. That neutrality is the asset.</div></div>
     </div>
   </div>
-  <div class="slide__bottom"><span>004 · The dual-track rule</span><span class="hint">The asset we hold <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>004 · The dual-track rule</span><span class="hint">The hand-off <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 005 The asset ============ -->
+<!-- ============ 005 The hand-off ============ -->
 <section class="slide" id="s5">
   <div class="chrome">
-    <div class="chrome__left">THE ASSET <span class="dot"></span> WHAT WE ALREADY HOLD</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">005 / 015</span></div>
+    <div class="chrome__left">THE HAND-OFF <span class="dot"></span> WHO OPENS THE BUSINESS CONVERSATION</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">005 / 016</span></div>
   </div>
   <div class="frame">
-    <p class="kicker fade-up">The open door, in numbers</p>
-    <h2 class="display fade-up d1">A sponsor base that is <em>already</em> our ICP.</h2>
-    <p class="subhead fade-up d2">Closed sponsors are <strong>proven payers with a budget-holder already identified</strong> — the person who signed the contract. That signatory is the commercial target; the warm sponsor contact is the route in.</p>
-    <div class="grid-4 fade-up d3" style="margin-top:48px;">
-      <div class="kpi"><span class="kpi-label">Already closed for 2026</span><span class="kpi-value">6</span><span class="kpi-sub">BD-ready today</span></div>
-      <div class="kpi"><span class="kpi-label">In live 2026 pipeline</span><span class="kpi-value">~45</span><span class="kpi-sub">contacted / negotiating</span></div>
-      <div class="kpi"><span class="kpi-label">Multi-year returners</span><span class="kpi-value">4×</span><span class="kpi-sub">AWS · Komodor · Mindera · Critical Mfg</span></div>
-      <div class="kpi"><span class="kpi-label">Signatories captured</span><span class="kpi-value"><em>21</em></span><span class="kpi-sub">budget-holders from signed deals</span></div>
+    <p class="kicker fade-up">It does not have to be Fábio — and usually shouldn't be</p>
+    <h2 class="display fade-up d1">Three ways to pass the baton.</h2>
+    <div class="handoff fade-up d2">
+      <div class="ho">
+        <div class="ho-tag">Pattern A · Warm intro, then step back</div>
+        <div class="ho-name">Fábio connects, then exits</div>
+        <div class="ho-body">Fábio sends a light peer intro — <em>"you should meet my colleague Ivan, he leads our platform work"</em> — then steps out of the thread. No sponsorship mentioned; time-separated from any renewal ask so it never feels quid-pro-quo.</div>
+        <div class="ho-when"><b>Use when:</b> sponsorship already closed &amp; the relationship is strong.</div>
+      </div>
+      <div class="ho rec">
+        <div class="ho-tag">Pattern B · Direct peer outreach</div>
+        <div class="ho-name">Ivan / manager reaches out cold-warm</div>
+        <div class="ho-body">An xgeeks sales-eng lead or manager messages the route-in or target directly, referencing KCD &amp; the community — Fábio never appears. Keeps the two roles fully separate.</div>
+        <div class="ho-when"><b>Recommended default</b> — especially for accounts still in sponsorship negotiation.</div>
+      </div>
+      <div class="ho">
+        <div class="ho-tag">Pattern C · On-the-floor</div>
+        <div class="ho-name">A manager engages in person</div>
+        <div class="ho-body">At our booth or the dinner, a manager (Luís Soares, André, Ivan, Gui) talks shop as a peer; business emerges naturally from the conversation. Fábio is the host, not the salesperson.</div>
+        <div class="ho-when"><b>Use when:</b> opportunistic, on-site, signal already sensed.</div>
+      </div>
     </div>
-    <p class="body-text fade-up d4" style="margin-top:28px;">Kubernetes-native stacks, product companies that scale engineering, streaming / fintech / automotive / retail-tech — this is precisely who xgeeks sells nearshore platform, cloud, data &amp; AI engineering to.</p>
+    <p class="plain fade-up d3"><b>Route-in</b> = the warm person who opens the door. <b>Target</b> = the person who signs / holds budget. The hand-off is always: organizer relationship → separate business voice → the target, on neutral ground.</p>
   </div>
-  <div class="slide__bottom"><span>005 · The asset</span><span class="hint">Segment the room <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>005 · The hand-off</span><span class="hint">The asset we hold <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 006 Segmentation ============ -->
+<!-- ============ 006 The asset ============ -->
 <section class="slide" id="s6">
   <div class="chrome">
-    <div class="chrome__left">SEGMENTATION <span class="dot"></span> ONE ROOM, THREE INTENTS</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">006 / 015</span></div>
+    <div class="chrome__left">THE ASSET <span class="dot"></span> WHAT WE ALREADY HOLD</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">006 / 016</span></div>
   </div>
   <div class="frame">
-    <p class="kicker fade-up">The same room holds clients, partners &amp; competitors</p>
-    <h2 class="display fade-up d1">Each bucket gets a <em>different</em> play.</h2>
-    <div class="posture fade-up d2">
-      <div class="posture-cell is-client">
-        <span class="posture-tag">Clients</span>
-        <div class="posture-name">~26 accounts</div>
-        <div class="posture-count">Product cos &amp; enterprises that subcontract engineering</div>
-        <div class="posture-text">ABM 1:1 / 1:few. Dinner seat, pre-booked conversation, named owner.</div>
-        <div class="posture-text">Sky · Critical Mfg · Blip · Feedzai · MC Sonae · Euronext · VW DS · La Redoute …</div>
-      </div>
-      <div class="posture-cell is-partner">
-        <span class="posture-tag">Partners</span>
-        <div class="posture-name">~19 accounts</div>
-        <div class="posture-count">Complementary, non-competing vendors</div>
-        <div class="posture-text">Referral &amp; co-sell / co-delivery. AWS is the anchor (internal route).</div>
-        <div class="posture-text">AWS · Komodor · Red Hat · Datadog · Nutanix · CloudFlare …</div>
-      </div>
-      <div class="posture-cell is-neutral">
-        <span class="posture-tag">Competitors / neutral</span>
-        <div class="posture-name">~18 accounts</div>
-        <div class="posture-count">Other IT-services / consulting / training firms</div>
-        <div class="posture-text">Relationship &amp; market-intelligence ONLY. Never a services pitch.</div>
-        <div class="posture-text">Devoteam · CGI · Aubay · Cocus · Eurotux · YLD …</div>
-      </div>
+    <p class="kicker fade-up">The open doors, in numbers</p>
+    <h2 class="display fade-up d1">A sponsor base that is <em>already</em> our ideal buyer.</h2>
+    <p class="subhead fade-up d2">Closed sponsors are <strong>proven payers with a budget-holder already named</strong> — the person who signed. And it's not just sponsors: we also hold bulk-ticket-buyer contacts and a full database of past speakers.</p>
+    <div class="grid-4 fade-up d3" style="margin-top:44px;">
+      <div class="kpi"><span class="kpi-label">Already closed for 2026</span><span class="kpi-value">6</span><span class="kpi-sub">BD-ready today</span></div>
+      <div class="kpi"><span class="kpi-label">In live 2026 pipeline</span><span class="kpi-value">~45</span><span class="kpi-sub">contacted / negotiating</span></div>
+      <div class="kpi"><span class="kpi-label">Multi-year returners</span><span class="kpi-value">4×</span><span class="kpi-sub">Komodor · AWS · Mindera · Critical Mfg</span></div>
+      <div class="kpi"><span class="kpi-label">Extra leverage lists</span><span class="kpi-value"><em>2</em></span><span class="kpi-sub">bulk-ticket buyers + speaker DB</span></div>
     </div>
-    <p class="body-text fade-up d4" style="margin-top:30px;"><strong>Ranking signal for clients:</strong> Kubernetes-native, scaling/capacity-constrained, and a budget-holding signatory we can reach through a warm contact.</p>
+    <p class="body-text fade-up d4" style="margin-top:24px;">Kubernetes-native stacks, product companies that scale engineering — streaming, fintech, automotive, retail-tech. Precisely who xgeeks sells nearshore engineering to.</p>
   </div>
-  <div class="slide__bottom"><span>006 · Segmentation</span><span class="hint">Tier the targets <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>006 · The asset</span><span class="hint">Segment the room <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 007 ABM tiers ============ -->
+<!-- ============ 007 Segmentation (full) ============ -->
 <section class="slide" id="s7">
   <div class="chrome">
-    <div class="chrome__left">ABM TIERS <span class="dot"></span> WHERE THE EFFORT GOES</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">007 / 015</span></div>
+    <div class="chrome__left">SEGMENTATION <span class="dot"></span> CLIENTS · PARTNERS · COMPETITORS</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">007 / 016</span></div>
   </div>
   <div class="frame">
-    <p class="kicker fade-up">Concentrate resources on the few that matter</p>
-    <h2 class="display fade-up d1">Three tiers, three intensities.</h2>
-    <div class="tiers fade-up d2">
-      <div class="tier t1"><div class="tier-tag">Tier 1<small>1:1</small></div><div class="tier-body"><strong>8 client accounts + AWS (co-sell).</strong> Top fit, budget-holder identified, warm/returning. Dedicated owner, dinner seat, pre-booked conversation, personalised follow-up within 48h.</div></div>
-      <div class="tier t2"><div class="tier-tag">Tier 2<small>1:few</small></div><div class="tier-body"><strong>~19 accounts.</strong> Good fit. Segment-based outreach, roundtable / dinner spillover, prioritised booth conversations.</div></div>
-      <div class="tier t3"><div class="tier-tag">Tier 3<small>1:many</small></div><div class="tier-body"><strong>Remainder.</strong> Monitor &amp; nurture. Partner co-marketing track for vendors; market-intelligence only for competitors. Watch for upgrade signals.</div></div>
+    <p class="kicker fade-up">The same room holds three kinds of company — full list below</p>
+    <h2 class="display fade-up d1">Each gets a <em>different</em> play.</h2>
+    <div class="segtable fade-up d2">
+      <div class="seg-row">
+        <div class="seg-h client">Clients · ~24<br>sell services</div>
+        <div class="seg-names"><b>Sky · Critical Manufacturing · Blip · Feedzai · MC Sonae · Euronext · La Redoute · Farfetch · JYSK · Revolut · Talkdesk · Unbabel · NOS · OLX · Bosch · Natixis · Mercedes-Benz.io · Coverflex · Kuehne+Nagel · Korber · Vodafone · Dachser · Tripadvisor · Altice.</b> <span class="dual">Dual (client + competitor): Critical TechWorks, VW Digital Solutions</span> — captive software houses that also build in-house, so approach as overflow-capacity clients, never as a threat.</div>
+      </div>
+      <div class="seg-row">
+        <div class="seg-h partner">Partners · ~17<br>referrals &amp; intros</div>
+        <div class="seg-names">AWS · Komodor · Red Hat · Datadog · CloudFlare · Vultr · Nutanix · Fortinet · PagerDuty · incident.io · Sysdig · LoftLabs · VictoriaMetrics · BitSight · JScrambler · GitHub · Miro. <span class="muted">Tooling/cloud vendors — they meet the same buyers we do. We trade referrals and introductions; no joint selling.</span></div>
+      </div>
+      <div class="seg-row">
+        <div class="seg-h neutral">Competitors / neutral · ~18<br>market intel only</div>
+        <div class="seg-names">Mindera · Devoteam · CGI · Aubay · Cocus · Celfocus · Eurotux · Present Technologies · Marionete · Growin · YLD · Devscope · Xelerate · Out.Cloud · Turbine Kreuzberg · mkdev · OutSystems · Darede. <span class="muted">Other services / consulting / training firms — keep the relationship for community &amp; market intelligence; <b>do not pitch.</b></span></div>
+      </div>
     </div>
-    <div class="card fade-up d3" style="margin-top:26px;">
-      <div class="card-body" style="font-size:15px;">For every Tier-1/2 account we name two roles: the <strong style="color:var(--accent);">TARGET</strong> (signatory / budget-holder) and the <strong style="color:var(--warm);">ROUTE-IN</strong> (warm contact who opens the door). We build around the route-in — accounts with no route-in are flagged <em>"needs a warm intro"</em> and never cold-contacted.</div>
-    </div>
+    <p class="plain fade-up d3"><b>What we realistically get:</b> Clients → nearshore platform / cloud / data / AI delivery &amp; team augmentation. Partners → warm introductions into accounts we can't reach directly. Competitors → intelligence, talent signals, community goodwill. Full reasoning per company in the document view.</p>
   </div>
-  <div class="slide__bottom"><span>007 · ABM tiers</span><span class="hint">The Tier-1 board <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>007 · Segmentation</span><span class="hint">Tiers + target/route-in <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 008 Tier-1 board ============ -->
+<!-- ============ 008 Tiers + Target/Route-in ============ -->
 <section class="slide" id="s8">
   <div class="chrome">
-    <div class="chrome__left">TIER-1 BOARD <span class="dot"></span> THE PRIORITY ACCOUNTS</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">008 / 015</span></div>
+    <div class="chrome__left">TIERS <span class="dot"></span> TARGET &amp; ROUTE-IN</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">008 / 016</span></div>
   </div>
   <div class="frame">
-    <p class="kicker fade-up">Eight rooms to win — names &amp; route-ins held privately</p>
-    <h2 class="display fade-up d1">Where to point the dinner seats.</h2>
+    <p class="kicker fade-up">A tier = how much hands-on effort an account earns</p>
+    <h2 class="display fade-up d1">Few accounts, treated deeply.</h2>
+    <p class="plain fade-up d1" style="margin-top:6px;">This is <b>ABM</b> — account-based marketing: instead of chasing many leads, we pick a short list of specific high-value companies and treat each as its own mini-campaign. For each we name the <b>TARGET</b> (signs the contract / holds budget — often no direct line) and the <b>ROUTE-IN</b> (the warm path to them — the Excel contact <em>and</em> any other relationships we've built inside that org).</p>
+    <div class="tiers fade-up d2">
+      <div class="tier t1"><div class="tier-tag">Tier 1<small>1:1 · deepest</small></div><div class="tier-body"><strong>8 client accounts.</strong> Top fit, budget-holder identified, warm/returning. Named owner, dinner seat, pre-booked conversation, personal 48h follow-up. <span class="muted">Sky, Critical Manufacturing, Blip, Feedzai, MC Sonae, Critical TechWorks, La Redoute, Euronext.</span></div></div>
+      <div class="tier t2"><div class="tier-tag">Tier 2<small>1:few</small></div><div class="tier-body"><strong>~19 accounts.</strong> Good fit. Segment outreach, dinner/roundtable spillover, prioritised booth conversations. <span class="muted">e.g. VW DS, Farfetch, JYSK, Revolut, NOS, Bosch, Natixis, Coverflex, Kuehne+Nagel.</span></div></div>
+      <div class="tier t3"><div class="tier-tag">Tier 3<small>1:many</small></div><div class="tier-body"><strong>Remainder.</strong> Light-touch nurture; partner-referral track for vendors; market-intel only for competitors. Watch for upgrade signals.</div></div>
+    </div>
+    <p class="plain fade-up d3"><b>Why route-in matters:</b> we rarely have a direct line to the signatory. Example — at MC Sonae the warm route-in is the marketing/events contact, but we also know <b>Luís Gabriel Monteiro, Head of Architecture &amp; Platforms</b>, a far better path to a real engineering conversation. We map and use every contact we hold inside each org, not just the booking contact.</p>
+  </div>
+  <div class="slide__bottom"><span>008 · Tiers &amp; route-in</span><span class="hint">The Tier-1 board <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 009 Tier-1 board ============ -->
+<section class="slide" id="s9">
+  <div class="chrome">
+    <div class="chrome__left">TIER-1 BOARD <span class="dot"></span> THE PRIORITY ACCOUNTS</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">009 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Eight rooms to win — names &amp; contacts held privately</p>
+    <h2 class="display fade-up d1">Where to point the effort first.</h2>
     <div class="board fade-up d2">
       <div class="acct"><div class="acct-name">Sky Portugal</div><div class="acct-pain">Streaming-platform scale; multi-region Kubernetes; senior nearshore capacity.</div><div class="acct-status live">Renewing · Gold</div></div>
       <div class="acct"><div class="acct-name">Critical Manufacturing</div><div class="acct-pain">Cloud-native MES / Industry 4.0 product scale. CEO is the budget-holder.</div><div class="acct-status live">Negotiating · 2024+25</div></div>
       <div class="acct"><div class="acct-name">Blip · Flutter</div><div class="acct-pain">Betting-platform scale; 1,000+ engineers in Porto; team augmentation.</div><div class="acct-status live">Contacted</div></div>
       <div class="acct"><div class="acct-name">Feedzai</div><div class="acct-pain">Scaling AI/ML fraud platform; GPU/AI workloads on K8s; data engineering.</div><div class="acct-status live">Contacted</div></div>
       <div class="acct"><div class="acct-name">MC Sonae · MC Digital</div><div class="acct-pain">Retail digital platform scale; data &amp; cloud; product engineering.</div><div class="acct-status closed">Closed ✓ BD-ready</div></div>
-      <div class="acct"><div class="acct-name">Critical TechWorks</div><div class="acct-pain">BMW digital-delivery overflow; specialised nearshore squads.</div><div class="acct-status closed">Closed ✓ BD-ready</div></div>
+      <div class="acct"><div class="acct-name">Critical TechWorks</div><div class="acct-pain">BMW digital-delivery overflow capacity. <span class="warm-text">Client + competitor — handle with care.</span></div><div class="acct-status closed">Closed ✓ BD-ready</div></div>
       <div class="acct"><div class="acct-name">La Redoute</div><div class="acct-pain">E-commerce modernization; active K8s migration (their own talk).</div><div class="acct-status live">Pending · returning</div></div>
       <div class="acct"><div class="acct-name">Euronext</div><div class="acct-pain">Regulated capital-markets cloud migration; platform &amp; data eng.</div><div class="acct-status live">Contacted</div></div>
     </div>
-    <p class="body-text fade-up d3" style="margin-top:26px;"><span class="accent-text">Closed ✓</span> accounts are green-lit for the business track today. The rest stay sponsorship-only until signed. <span class="muted">Signatory names, contacts &amp; deal values live in the private playbook — never on this site.</span></p>
+    <p class="body-text fade-up d3" style="margin-top:24px;"><span class="accent-text">Closed ✓</span> accounts are green-lit for the business track today. The rest stay sponsorship-only until signed. <span class="muted">Signatory names, contacts &amp; deal values live in the private playbook — never on this site.</span></p>
   </div>
-  <div class="slide__bottom"><span>008 · Tier-1 board</span><span class="hint">The calendar <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>009 · Tier-1 board</span><span class="hint">The doors <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 009 Dual-track timeline ============ -->
-<section class="slide" id="s9">
+<!-- ============ 010 The doors (channels overview) ============ -->
+<section class="slide" id="s10">
+  <div class="chrome">
+    <div class="chrome__left">THE DOORS <span class="dot"></span> A MANY-CHANNEL, YEAR-ROUND MOTION</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">010 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">KCD is the warm start — not the whole plan</p>
+    <h2 class="display fade-up d1">Seven doors, one cadence.</h2>
+    <div class="doors fade-up d2">
+      <div class="door hot"><div class="door-phase">Before · most important</div><div class="door-name">Email &amp; LinkedIn outreach</div><div class="door-body">Warm accounts weeks ahead with a KCD hook — where most meetings are actually booked.</div></div>
+      <div class="door hot"><div class="door-phase">Ongoing · warm line</div><div class="door-name">The logistics relationship</div><div class="door-body">We already talk to sponsors constantly — onboarding, T&amp;C, invoices, booth. Business opens off this later.</div></div>
+      <div class="door"><div class="door-phase">Before</div><div class="door-name">Bulk-ticket buyers</div><div class="door-body">Siemens, NOS &amp; others already contacted — hand to a sales lead with the KCD hook.</div></div>
+      <div class="door"><div class="door-phase">Before</div><div class="door-name">Past speakers (2024–25 DB)</div><div class="door-body">Many work at top cloud/AI firms — reach out ahead, framed on their work + community.</div></div>
+      <div class="door"><div class="door-phase">During</div><div class="door-name">Our booth + their booths</div><div class="door-body">Managers work the floor peer-to-peer; sponsors &amp; their engineers are on-site all day.</div></div>
+      <div class="door"><div class="door-phase">During</div><div class="door-name">Speaker &amp; guest dinners</div><div class="door-body">One valuable asset among many — managers present and work the room naturally.</div></div>
+      <div class="door"><div class="door-phase">Year-round</div><div class="door-name">National meetups</div><div class="door-body">We run meetups Braga→Lisbon — low-pressure, speaker-format, every quarter.</div></div>
+      <div class="door"><div class="door-phase">After</div><div class="door-name">Fast personal follow-up</div><div class="door-body">Continue the conversation within 48h; nurture toward deals over 6–18 months.</div></div>
+    </div>
+  </div>
+  <div class="slide__bottom"><span>010 · The doors</span><span class="hint">Before the event <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 011 BEFORE — remote & ahead-of-time ============ -->
+<section class="slide" id="s11">
+  <div class="chrome">
+    <div class="chrome__left">BEFORE THE EVENT <span class="dot"></span> THE BIGGEST WINDOW</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">011 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Remote &amp; ahead-of-time — where most meetings get booked</p>
+    <h2 class="display fade-up d1">Open doors from your desk.</h2>
+    <div class="fade-up d2" style="margin-top:18px;">
+      <div class="agent"><div class="agent__num">01</div><div><div class="agent__name">Email &amp; LinkedIn, weeks ahead<span class="ph">most important</span></div><div class="agent__desc">A peer message from the xgeeks business voice with a KCD hook and a light, non-salesy transition to "could we help with X" — example wording two slides on. Pre-warming makes on-site meetings far more likely.</div></div></div>
+      <div class="agent"><div class="agent__num">02</div><div><div class="agent__name">The existing logistics relationship</div><div class="agent__desc">Via KCD we already talk to sponsors a lot — onboarding, info, T&amp;C, payments, invoices, booth, logistics. A genuinely warm, ongoing line. Once a sponsorship is closed, the business track can open off it — through the separate voice, never mixed into a logistics email.</div></div></div>
+      <div class="agent"><div class="agent__num">03</div><div><div class="agent__name">Bulk-ticket buyers — hand to a sales lead</div><div class="agent__desc">Companies like Siemens &amp; NOS bought blocks of tickets; those contacts are already gathered and spoken to. Fábio passes each to Ivan (or a sales-eng lead), who follows up with a KCD hook → "since your team's coming, worth a quick chat about how you scale engineering?" → exploratory call.</div></div></div>
+      <div class="agent"><div class="agent__num">04</div><div><div class="agent__name">Past speakers (2024–2025 DB)</div><div class="agent__desc">Many speakers work at top cloud/AI companies — KCD's exact topic. Reach out ahead using the speaker database, framed around their talk &amp; the community, leading to business only where there's real fit. Also helps source 2026 speakers and meetup talks.</div></div></div>
+    </div>
+  </div>
+  <div class="slide__bottom"><span>011 · Before the event</span><span class="hint">During the event <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 012 DURING — booth + dinners ============ -->
+<section class="slide" id="s12">
+  <div class="chrome">
+    <div class="chrome__left">DURING THE EVENT <span class="dot"></span> BOOTH &amp; DINNERS</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">012 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">On-site — peer-to-peer, curiosity-first, no pitch</p>
+    <h2 class="display fade-up d1">Work the floor, then the table.</h2>
+    <div class="grid-2 fade-up d2" style="margin-top:24px;">
+      <div class="card is-accent">
+        <div class="card-label" style="margin-top:0;">The booth — a first-class channel</div>
+        <div class="card-body" style="font-size:13.5px;">Staff our booth with 1–2 sales + engineering managers. Sponsors and their engineers are on-site all day — heads and managers are often physically there. Our people walk over to sponsor booths, ask about their stack and what they're building, and host the same curious conversations at ours. Get to know their engineers; understand the challenges. No pitch — peer interest first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label" style="margin-top:0;">The dinners — one asset, not the plan</div>
+        <div class="card-body" style="font-size:13.5px;"><strong>Speaker dinner</strong> (Day 1 or Day 2 of KCD) — peers, speakers, partners. <strong>Guest dinner</strong> — invite the returning 2024/2025 sponsors we're renewing and accounts in negotiation (e.g. Kuehne+Nagel), aiming for the senior signatories or someone who can reach them. Our managers — <strong>Luís Soares, André, Ivan, Gui</strong> and others — simply present and work the room naturally. No assigned seating, no scripts.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d3"><b>Capture, lightly:</b> after each day, jot who we spoke to, their challenge, and the next step, so nothing is lost before follow-up. The point of being on-site is conversations, not badge scans.</p>
+  </div>
+  <div class="slide__bottom"><span>012 · During the event</span><span class="hint">The language <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 013 How to introduce the topic ============ -->
+<section class="slide" id="s13">
+  <div class="chrome">
+    <div class="chrome__left">THE LANGUAGE <span class="dot"></span> COPY-PASTEABLE WORDING</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">013 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Real messages for each setting — remote first</p>
+    <h2 class="display fade-up d1">How to introduce the business topic.</h2>
+    <div class="msgwrap fade-up d2">
+      <div>
+        <div class="msg"><div class="msg-label">Before · email / LinkedIn (most important)</div><div class="msg-text">"Hi [name] — great to have [company] at KCD Porto again. Outside the event hat: I'm on the engineering side at xgeeks and we do a lot of nearshore platform/cloud work. Saw you're scaling [X] — would a 20-min swap of notes before November be useful? <b>No agenda, just peers.</b>"</div></div>
+        <div class="msg"><div class="msg-label">Before · bulk-ticket buyer (via Ivan)</div><div class="msg-text">"Hi [name] — glad your team's joining KCD Porto. Since a few of you are coming, thought I'd reach out from the xgeeks engineering side — we help teams like yours scale delivery. Worth a quick exploratory call?"</div></div>
+      </div>
+      <div>
+        <div class="msg"><div class="msg-label">During · at our booth / theirs</div><div class="msg-text">"What are you folks building these days? … We run a lot of that nearshore — how's the platform side holding up as you scale?" <b>Curiosity first; let the need surface.</b></div></div>
+        <div class="msg"><div class="msg-label">During · at the dinner (manager)</div><div class="msg-text">"Loved your team's talk. We pick up exactly this kind of work — happy to connect you with one of our platform leads if it's ever useful, totally exploratory."</div></div>
+        <div class="msg redline"><div class="msg-label">Never</div><div class="msg-text">Imply sponsoring buys business (or vice-versa); sell from the stage; pitch a competitor. Off-stage, peer-to-peer, neutral — always.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom"><span>013 · The language</span><span class="hint">The calendar <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 014 Dual-track calendar ============ -->
+<section class="slide" id="s14">
   <div class="chrome">
     <div class="chrome__left">THE CALENDAR <span class="dot"></span> BOTH TRACKS, NO CONFLICT</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">009 / 015</span></div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">014 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">Anchored to KCD Porto 2026 · Nov 19–20</p>
     <h2 class="display fade-up d1">Business touches slot into the <em>gaps</em>.</h2>
+    <p class="plain fade-up d1" style="margin-top:4px;"><b>"Slot into the gaps"</b> = time business conversations for moments that don't clash with closing the sponsorship or running the event.</p>
     <div class="gantt fade-up d2">
-      <div class="gantt-cols"><span>Track</span><span>Jun–Jul</span><span>Aug–Sep</span><span>Oct</span><span>Nov 18–20</span><span>Nov 21–23</span><span>Dec→May</span></div>
+      <div class="gantt-cols"><span>Track</span><span>Jun–Jul</span><span>Aug–Sep</span><span>Oct</span><span>Nov 19–20</span><span>Nov 21–23</span><span>Dec→May</span></div>
       <div class="gantt-row a">
         <div class="gantt-lane-label">A · Sponsorship</div>
         <div class="gantt-track">
@@ -577,159 +633,73 @@ code, .code-inline {
         <div class="gantt-lane-label">B · Business dev</div>
         <div class="gantt-track">
           <div class="bar ghost" style="left:0%; width:16%;">Plan · no outreach</div>
-          <div class="bar b" style="left:17%; width:32%;">Warm closed accts · pre-book Tier-1</div>
-          <div class="bar b" style="left:50%; width:16%;">Dinners · signal capture</div>
+          <div class="bar b" style="left:17%; width:32%;">Email/LinkedIn · speakers · tickets · pre-book</div>
+          <div class="bar b" style="left:50%; width:16%;">Booth + dinners</div>
           <div class="bar b" style="left:67%; width:9%;">48h follow-up</div>
-          <div class="bar b" style="left:77%; width:23%;">Advance &amp; nurture pipeline</div>
+          <div class="bar b" style="left:77%; width:23%;">Nurture + meetups</div>
         </div>
       </div>
     </div>
-    <div class="grid-3 fade-up d4" style="margin-top:34px;">
-      <div class="card"><div class="card-label" style="margin-top:0;">Now → Jul</div><div class="card-body">Push CFP, close sponsorships. BD = planning only. <strong>No outreach to in-negotiation accounts.</strong></div></div>
-      <div class="card is-accent"><div class="card-label" style="margin-top:0;">Aug → mid-Nov</div><div class="card-body">Warm BD-ready accounts with peer content; build seating; pre-book Tier-1 from late Sep (8–10 wks out).</div></div>
-      <div class="card is-warm"><div class="card-label" style="margin-top:0;">Event → 6 months</div><div class="card-body">Run dinners off-stage; 48h follow-up; advance opportunities. Pipeline matures over 6–18 months.</div></div>
+    <div class="grid-3 fade-up d4" style="margin-top:30px;">
+      <div class="card"><div class="card-label" style="margin-top:0;">Now → Jul</div><div class="card-body">Push sponsorships. BD = planning only. <strong>No outreach to in-negotiation accounts.</strong></div></div>
+      <div class="card is-accent"><div class="card-label" style="margin-top:0;">Aug → mid-Nov</div><div class="card-body">Remote outreach to BD-ready accounts, speakers &amp; ticket buyers; pre-book conversations from late Sep.</div></div>
+      <div class="card is-warm"><div class="card-label" style="margin-top:0;">Event → 6 months</div><div class="card-body">Booth + dinners on-site; 48h follow-up; nurture via meetups. Pipeline matures over 6–18 months.</div></div>
     </div>
   </div>
-  <div class="slide__bottom"><span>009 · Dual-track calendar</span><span class="hint">The channels <span class="arrow"></span></span></div>
+  <div class="slide__bottom"><span>014 · Dual-track calendar</span><span class="hint">Measurement <span class="arrow"></span></span></div>
 </section>
 
-<!-- ============ 010 Channel playbook ============ -->
-<section class="slide" id="s10">
-  <div class="chrome">
-    <div class="chrome__left">CHANNEL PLAYBOOK <span class="dot"></span> KCD IS ONE DOOR, NOT THE ONLY ONE</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">010 / 015</span></div>
-  </div>
-  <div class="frame">
-    <p class="kicker fade-up">A multi-channel motion, not an event one-off</p>
-    <h2 class="display fade-up d1">Five channels, one cadence.</h2>
-    <div class="fade-up d2" style="margin-top:24px;">
-      <div class="agent"><div class="agent__num">01</div><div><div class="agent__name">Email outreach &amp; nurture</div><div class="agent__desc">First touch is a <em>peer continuation</em>, not a cold pitch — references KCD, their talk, their booth topic. Cadence: relevance → value write-up → soft 20-min ask → nurture.</div></div></div>
-      <div class="agent"><div class="agent__num">02</div><div><div class="agent__name">Campaigns · ABM · LinkedIn · content</div><div class="agent__desc">Targeted ABM to Tier-1/2; thought-leadership on platform engineering, team scaling, GPU/AI on Kubernetes. Warm the route-in and target before any meeting.</div></div></div>
-      <div class="agent"><div class="agent__num">03</div><div><div class="agent__name">Community &amp; meetups</div><div class="agent__desc">K8s / cloud-native meetups, AWS UG, DevOps Days PT. Show up as engineers, value-first. Relationship capital that compounds over 6–18 months.</div></div></div>
-      <div class="agent"><div class="agent__num">04</div><div><div class="agent__name">KCD dinners — the core asset</div><div class="agent__desc">Speaker dinner (peers, partners) + guest dinner (curated Tier-1 decision-makers). Every seat maps to a target account. Off-stage, no pitch, signal capture.</div></div></div>
-      <div class="agent"><div class="agent__num">05</div><div><div class="agent__name">Partner co-sell — AWS anchor</div><div class="agent__desc">AWS is a closed Gold sponsor and xgeeks partner with an internal route. Co-sell into joint accounts; partner referrals shorten cycles and bypass objections.</div></div></div>
-    </div>
-  </div>
-  <div class="slide__bottom"><span>010 · Channel playbook</span><span class="hint">The dinner mechanics <span class="arrow"></span></span></div>
-</section>
-
-<!-- ============ 011 Dinner playbook ============ -->
-<section class="slide" id="s11">
-  <div class="chrome">
-    <div class="chrome__left">THE DINNER PLAYBOOK <span class="dot"></span> HOW DEALS GET ENGINEERED</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">011 / 015</span></div>
-  </div>
-  <div class="frame">
-    <p class="kicker fade-up">The operational heart of the plan</p>
-    <h2 class="display fade-up d1">The guest list <em>is</em> the product.</h2>
-    <div class="grid-4 fade-up d2" style="margin-top:44px;">
-      <div class="card is-accent"><div class="card-num">01</div><div class="card-label">Curate</div><div class="card-body">Every seat maps to a target account or strategic relationship. No filler. A narrow theme lifts acceptance: "platform engineering at scale," "AI/GPU on K8s."</div></div>
-      <div class="card"><div class="card-num">02</div><div class="card-label">Seat it like chess</div><div class="card-body">Place each target beside an xgeeks engineer who speaks their language — and a happy current client who provides social proof so we never make our own case.</div></div>
-      <div class="card"><div class="card-num">03</div><div class="card-label">Run it peer-led</div><div class="card-body">One moderator, one topic, no hard selling. A discussion guide with planted prompts surfaces capacity &amp; roadmap pain naturally. Brand hosts, doesn't perform.</div></div>
-      <div class="card is-warm"><div class="card-num">04</div><div class="card-label">Capture &amp; follow up</div><div class="card-body">Log attendee, tier, topic, signals, next step → CRM within 24h. Hot contacts hear from us within 48h with a continuation, not a thank-you.</div></div>
-    </div>
-    <p class="body-text fade-up d4" style="margin-top:30px;">A senior person decides to attend based on <em>who else is in the room</em>, not the food. Curation and seating are the highest-leverage tactics we have.</p>
-  </div>
-  <div class="slide__bottom"><span>011 · Dinner playbook</span><span class="hint">The language <span class="arrow"></span></span></div>
-</section>
-
-<!-- ============ 012 How to introduce the topic ============ -->
-<section class="slide" id="s12">
-  <div class="chrome">
-    <div class="chrome__left">THE LANGUAGE <span class="dot"></span> RELATIONSHIP → NEED → CONVERSATION</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">012 / 015</span></div>
-  </div>
-  <div class="frame">
-    <p class="kicker fade-up">Peers discovering a need — not seller → buyer</p>
-    <h2 class="display fade-up d1">How we introduce the business topic.</h2>
-    <div class="grid-2 fade-up d2" style="margin-top:36px;">
-      <div>
-        <div class="msg"><div class="msg-label">Open · relationship</div><div class="msg-text">"Loved your team's talk on the catalog-to-Kubernetes migration — we run a lot of those nearshore. How's the platform side holding up as you scale?"</div></div>
-        <div class="msg"><div class="msg-label">Discover · need</div><div class="msg-text">"Where are you most capacity-constrained right now?" — listen for capacity gaps, roadmap pressure, hiring pain, delivery risk.</div></div>
-        <div class="msg"><div class="msg-label">Bridge · conversation</div><div class="msg-text">"That's exactly what our teams pick up — want a 20-minute call with one of our platform leads? Totally exploratory."</div></div>
-      </div>
-      <div>
-        <div class="msg redline"><div class="msg-label">Red line</div><div class="msg-text">Off-stage relationship-building only. Never trade stage, agenda, or program for commercial gain.</div></div>
-        <div class="msg redline"><div class="msg-label">Red line</div><div class="msg-text">Never imply sponsorship buys business — or that business buys sponsorship perks.</div></div>
-        <div class="msg redline"><div class="msg-label">Red line</div><div class="msg-text">Respect the CNCF Code of Conduct and attendee privacy at all times. The brand is the host.</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="slide__bottom"><span>012 · The language</span><span class="hint">The roadmap <span class="arrow"></span></span></div>
-</section>
-
-<!-- ============ 013 Roadmap ============ -->
-<section class="slide" id="s13">
-  <div class="chrome">
-    <div class="chrome__left">THE ROADMAP <span class="dot"></span> 30 / 60 / 90 → 6–18 MONTHS</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">013 / 015</span></div>
-  </div>
-  <div class="frame">
-    <p class="kicker fade-up">Sequenced so each step earns the next</p>
-    <h2 class="display fade-up d1">From plan to influenced pipeline.</h2>
-    <div class="steps fade-up d2">
-      <div class="step"><div class="step__n">30</div><div class="step__title">Set up</div><div class="step__desc">Lock Tier-1 list &amp; BD owners. Design two dinner themes. BD = planning only.</div></div>
-      <div class="step"><div class="step__n">60</div><div class="step__title">Warm</div><div class="step__desc">Peer content &amp; LinkedIn to BD-ready accounts. Draft guest list &amp; seating.</div></div>
-      <div class="step"><div class="step__n">90</div><div class="step__title">Pre-book</div><div class="step__desc">Confirm seating; pre-book Tier-1 conversations from late Sep (8–10 wks out).</div></div>
-      <div class="step"><div class="step__n">N</div><div class="step__title">Event &amp; 48h</div><div class="step__desc">Run dinners off-stage. Capture signals. Personalised follow-up within 48h.</div></div>
-      <div class="step"><div class="step__n">6–18</div><div class="step__title">Mature</div><div class="step__desc">Advance opportunities; nurture; report influenced pipeline. Feed next cycle.</div></div>
-    </div>
-    <p class="body-text fade-up d4" style="margin-top:30px;">KCD's job is to <em>open</em> doors, not close in-room. Services pipeline matures over 6–18 months — leadership should expect early engagement in 2–3 months and revenue later.</p>
-  </div>
-  <div class="slide__bottom"><span>013 · The roadmap</span><span class="hint">Measurement <span class="arrow"></span></span></div>
-</section>
-
-<!-- ============ 014 Measurement ============ -->
-<section class="slide" id="s14">
-  <div class="chrome">
-    <div class="chrome__left">MEASUREMENT <span class="dot"></span> WHAT TO HOLD US TO</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">014 / 015</span></div>
-  </div>
-  <div class="frame">
-    <p class="kicker fade-up">Report pipeline influenced — never lead volume</p>
-    <h2 class="display fade-up d1">Measured like any acquisition channel.</h2>
-    <div class="grid-4 fade-up d2" style="margin-top:48px;">
-      <div class="kpi"><span class="kpi-label">Pipeline-to-cost</span><span class="kpi-value"><em>≥4:1</em></span><span class="kpi-sub">the number that justifies spend</span></div>
-      <div class="kpi"><span class="kpi-label">Signals / dinner</span><span class="kpi-value">5–8</span><span class="kpi-sub">vs. 1–2 ad-hoc</span></div>
-      <div class="kpi"><span class="kpi-label">Meetings / 30 days</span><span class="kpi-value">8–14</span><span class="kpi-sub">per well-run dinner</span></div>
-      <div class="kpi"><span class="kpi-label">Follow-up SLA</span><span class="kpi-value">≤48h</span><span class="kpi-sub">on hot contacts</span></div>
-    </div>
-    <div class="card fade-up d3" style="margin-top:26px;">
-      <div class="card-body" style="font-size:15px;">Also tracked: Tier-1/2 accounts engaged (target vs. actual) · opportunities created · <strong style="color:var(--accent);">pipeline influenced over a 6–12 month window</strong> · cost per qualified conversation. Every contact is tagged to the KCD 2026 event object so we can later say "this event sourced X opportunities and Y closed-won."</div>
-    </div>
-  </div>
-  <div class="slide__bottom"><span>014 · Measurement</span><span class="hint">The ask <span class="arrow"></span></span></div>
-</section>
-
-<!-- ============ 015 Recommendation ============ -->
+<!-- ============ 015 Measurement ============ -->
 <section class="slide" id="s15">
   <div class="chrome">
+    <div class="chrome__left">MEASUREMENT <span class="dot"></span> WHAT TO HOLD US TO</div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">015 / 016</span></div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Measure the money, not the motion</p>
+    <h2 class="display fade-up d1">Judged like any acquisition channel.</h2>
+    <p class="plain fade-up d1" style="margin-top:4px;"><b>Report pipeline influenced, not lead volume</b> = measure the € value of real business conversations and potential deals we opened — not vanity counts like contacts collected or badges scanned.</p>
+    <div class="grid-4 fade-up d2" style="margin-top:40px;">
+      <div class="kpi"><span class="kpi-label">Pipeline-to-cost</span><span class="kpi-value"><em>≥4:1</em></span><span class="kpi-sub">€ opened vs. € spent</span></div>
+      <div class="kpi"><span class="kpi-label">Qualified conversations</span><span class="kpi-value">5–8</span><span class="kpi-sub">real needs surfaced / dinner</span></div>
+      <div class="kpi"><span class="kpi-label">Meetings / 30 days</span><span class="kpi-value">8–14</span><span class="kpi-sub">booked post-event</span></div>
+      <div class="kpi"><span class="kpi-label">Follow-up SLA</span><span class="kpi-value">≤48h</span><span class="kpi-sub">on hot contacts</span></div>
+    </div>
+    <div class="card fade-up d3" style="margin-top:24px;">
+      <div class="card-body" style="font-size:15px;">Also tracked: Tier-1/2 accounts engaged (target vs. actual) · opportunities created · <strong style="color:var(--accent);">€ pipeline influenced over a 6–12 month window</strong> · cost per qualified conversation. Every contact is tagged to the KCD 2026 record so we can later say "this event opened X opportunities and Y closed-won."</div>
+    </div>
+  </div>
+  <div class="slide__bottom"><span>015 · Measurement</span><span class="hint">The ask <span class="arrow"></span></span></div>
+</section>
+
+<!-- ============ 016 Recommendation ============ -->
+<section class="slide" id="s16">
+  <div class="chrome">
     <div class="chrome__left">THE RECOMMENDATION <span class="dot"></span> NEXT FIVE ACTIONS</div>
-    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">015 / 015</span></div>
+    <div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">016 / 016</span></div>
   </div>
   <div class="frame">
     <p class="kicker fade-up">What we do on Monday</p>
     <h2 class="display fade-up d1">Run the dual track. <em>Start now.</em></h2>
     <div class="tag-row fade-up d2">
-      <div class="tag"><div class="tag-head">1 · Lock Tier-1</div><div class="tag-body">Confirm the 8 accounts; assign a named BD owner per account, separate from the organizer voice.</div></div>
-      <div class="tag"><div class="tag-head">2 · Design the dinners</div><div class="tag-body">Pick two themes; start the curated guest list and seating chart.</div></div>
-      <div class="tag"><div class="tag-head">3 · Green-light safely</div><div class="tag-body">BD only on closed / on-track accounts. In-negotiation stays Track-A-only.</div></div>
-      <div class="tag"><div class="tag-head">4 · Pre-book</div><div class="tag-body">Tier-1 conversations from late September — 8–10 weeks before Nov 19.</div></div>
-      <div class="tag"><div class="tag-head">5 · Instrument</div><div class="tag-body">CRM tagging to the KCD 2026 object so influenced pipeline is reportable at ≥4:1.</div></div>
+      <div class="tag"><div class="tag-head">1 · Lock Tier-1 &amp; owners</div><div class="tag-body">Confirm the 8 accounts; name the business voice (Ivan / managers), separate from Fábio.</div></div>
+      <div class="tag"><div class="tag-head">2 · Start remote outreach</div><div class="tag-body">Email/LinkedIn to BD-ready accounts; hand bulk-ticket buyers &amp; speaker DB to the sales lead.</div></div>
+      <div class="tag"><div class="tag-head">3 · Green-light safely</div><div class="tag-body">BD only on closed / on-track accounts. In-negotiation stays Fábio-only.</div></div>
+      <div class="tag"><div class="tag-head">4 · Plan on-site</div><div class="tag-body">Booth staffing + both dinners (Day 1/2); managers briefed to work the room.</div></div>
+      <div class="tag"><div class="tag-head">5 · Instrument</div><div class="tag-body">Tag every contact to KCD 2026 so € pipeline is reportable at ≥4:1.</div></div>
     </div>
-    <div class="divider divider--accent fade-up d3" style="margin-top:48px;"></div>
-    <p class="pull-quote fade-up d3" style="font-size:clamp(22px,2.6vw,34px); margin-top:24px;">We already have the relationships. The work is to <em>open the conversation</em> — on neutral ground, in the right order, with the right voice.</p>
-    <div class="cover-slot fade-up d4" style="margin-top:34px;">
+    <div class="divider divider--accent fade-up d3" style="margin-top:44px;"></div>
+    <p class="pull-quote fade-up d3" style="font-size:clamp(22px,2.6vw,34px); margin-top:22px;">We already have the relationships. The work is to <em>open the conversation</em> — across many doors, in the right order, with the right voice.</p>
+    <div class="cover-slot fade-up d4" style="margin-top:30px;">
       <div class="cover-meta"><span>synvert xgeeks</span><span>KCD Porto 2026 · Nov 19–20 · SuperBock Arena</span><span><a href="analysis.html" style="color:var(--accent);text-decoration:none;">Read the full analysis →</a></span></div>
     </div>
   </div>
-  <div class="slide__bottom"><span>015 · The recommendation</span><span>End · synvert xgeeks</span></div>
+  <div class="slide__bottom"><span>016 · The recommendation</span><span>End · synvert xgeeks</span></div>
 </section>
 
 </main>
 
 <script>
-// progress rail active-state + fade-up on enter
 (function () {
   const slides = Array.from(document.querySelectorAll('.slide'));
   const links = new Map(Array.from(document.querySelectorAll('.deck-progress a')).map(a => [a.dataset.target, a]));
@@ -743,10 +713,8 @@ code, .code-inline {
     });
   }, { threshold: 0.5 });
   slides.forEach(s => io.observe(s));
-
-  // arrow-key navigation
   document.addEventListener('keydown', (ev) => {
-    if (ev.key !== 'ArrowDown' && ev.key !== 'ArrowRight' && ev.key !== 'ArrowUp' && ev.key !== 'ArrowLeft') return;
+    if (!['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(ev.key)) return;
     const cur = slides.findIndex(s => { const r = s.getBoundingClientRect(); return r.top >= -5 && r.top < window.innerHeight * 0.5; });
     let next = cur;
     if (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') next = Math.min(slides.length - 1, cur + 1);

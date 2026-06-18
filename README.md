@@ -13,9 +13,11 @@ lives only in `private/PRIVATE-account-playbook.md` (git-ignored) and the privat
 ## What this is
 
 synvert xgeeks organises KCD Porto. This plan turns the resulting sponsor relationships into
-nearshore-engineering pipeline for xgeeks — via a **dual-track** motion (sponsorship Role A +
-business-dev Role B) that never compromises the sponsorship or KCD's vendor-neutral integrity.
-Anchored to **KCD Porto 2026 (Nov 19–20, SuperBock Arena, Porto)**.
+nearshore-engineering pipeline for xgeeks — via a **dual-track** motion (sponsorship Track A +
+business-dev Track B) that opens conversations across **many channels, before / during / after**
+the event (email & LinkedIn, the existing logistics relationship, our booth, the dinners, national
+meetups, bulk-ticket buyers, past speakers) and never compromises the sponsorship or KCD's
+vendor-neutral integrity. Anchored to **KCD Porto 2026 (Nov 19–20, SuperBock Arena, Porto)**.
 
 ## Pages
 
