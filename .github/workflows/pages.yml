@@ -37,7 +37,7 @@ jobs:
           echo "Presentations included in deploy:"
           for dir in */; do
             folder="${dir%/}"
-            if [[ "$folder" != _* ]] && [[ "$folder" != .* ]] && [ -f "$folder/index.html" ]; then
+            if [[ "$folder" != _* ]] && [[ "$folder" != .* ]] && [[ "$folder" != dist ]] && [ -f "$folder/index.html" ]; then
               cp -r "$folder" "dist/$folder"
               echo "  ✓ $folder"
             fi
