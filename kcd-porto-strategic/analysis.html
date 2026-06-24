@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KCD Porto 2026 — A Strategic Asset · The Full Case · synvert xgeeks</title>
+<meta name="description" content="The long-form leadership case behind KCD Porto 2026: the six-year bet, the CNCF moat, the 2026 DevOps Days merger, the business model, and where the asset goes next.">
+<meta name="theme-color" content="#03161a">
+<!--
+  Document view (long-form companion to index.html).
+  SELF-CONTAINED: all CSS + JS live inline below so this folder opens standalone.
+  Light + dark via prefers-color-scheme. This is a DIFFERENT design system from
+  index.html (serif body, system sans headings) — do NOT copy deck tokens here.
+-->
+<style>
+/* ============================================================
+   Document-view stylesheet — synvert xgeeks brand palette
+   (Techno Green / Dark Space / coral). Light + dark.
+   ============================================================ */
+:root {
+  --ink: #0c1a1c;
+  --ink-soft: #2a3a3c;
+  --muted: #5b6a6b;
+  --rule: #d5e0dd;
+  --rule-soft: #eef3f1;
+  --accent: #04897a;          /* readable green on light bg */
+  --accent-bright: #00EBB6;   /* Techno Green */
+  --accent-soft: #e6faf4;
+  --accent-strong: #002E33;   /* Dark Space */
+  --warm: #e2643a;            /* coral, darkened for contrast */
+  --bg: #fbfdfc;
+  --bg-card: #ffffff;
+  --bg-callout: #f3f9f7;
+  --good-bg: #e6f7ef; --good-fg: #0a6e4b;
+  --warn-bg: #fdf3df; --warn-fg: #8a5a08;
+  --bad-bg:  #fdeae5; --bad-fg:  #a23a1c;
+  --shadow-sm: 0 1px 2px rgba(0, 46, 51, 0.05);
+  --shadow-md: 0 4px 18px rgba(0, 46, 51, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef5f3;
+    --ink-soft: #c5d2cf;
+    --rule: #1f3539;
+    --rule-soft: #15282b;
+    --muted: #879895;
+    --accent: #00EBB6;
+    --accent-bright: #00EBB6;
+    --accent-soft: #0d2a2b;
+    --accent-strong: #8fe9d8;
+    --warm: #ff966e;
+    --bg: #03161a;
+    --bg-card: #082023;
+    --bg-callout: #0a2528;
+    --good-bg: #0a2a1d; --good-fg: #5fe3b0;
+    --warn-bg: #2a1f0a; --warn-fg: #f1c45a;
+    --bad-bg:  #2a1411; --bad-fg:  #f4a48a;
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Charter", "Iowan Old Style", "Georgia", "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, nav, table, .kicker, .pill, .callout-head, code, .mono,
+.hero__meta, .toc, .site-footer, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+               "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+code, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--rule-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+}
+/* ---------------- Hero ---------------- */
+.hero {
+  background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+  border-bottom: 1px solid var(--rule);
+  padding: 72px 24px 56px;
+}
+.hero__inner { max-width: 1200px; margin: 0 auto; }
+.kicker {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  margin: 0 0 14px 0;
+  color: var(--ink);
+}
+.hero__subtitle {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 760px;
+  margin: 0 0 22px 0;
+  line-height: 1.4;
+}
+.hero__lede {
+  max-width: 780px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 16px;
+  margin: 8px 0 0 0;
+}
+.hero__meta {
+  margin-top: 22px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.hero__meta span + span::before { content: "·"; margin: 0 10px; color: var(--rule); }
+/* ---------------- Layout ---------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 18px 64px; }
+}
+/* ---------------- Sticky TOC ---------------- */
+.toc { position: sticky; top: 24px; align-self: start; font-size: 14px; }
+.toc__title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 8px 0 8px 16px;
+  margin-left: -1px;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+  transition: color 120ms, border-color 120ms;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--rule); }
+.toc a.is-active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.toc__num { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.toc a.is-active .toc__num { color: var(--accent); }
+@media (max-width: 900px) {
+  .toc { position: static; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .toc ol { border-left: none; }
+  .toc a { padding-left: 0; border-left: none; }
+  .toc a.is-active { border-left: none; }
+}
+/* ---------------- Content ---------------- */
+.content { max-width: 780px; }
+.content > section { padding-top: 8px; }
+.content > section + section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.content h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 14px 0;
+  scroll-margin-top: 24px;
+}
+.content h2 .section-num { display: inline-block; margin-right: 12px; color: var(--accent); font-weight: 600; }
+.content h3 { font-size: 19px; line-height: 1.3; font-weight: 650; color: var(--ink); margin: 28px 0 6px 0; }
+.content h4 { font-size: 15px; line-height: 1.35; font-weight: 650; color: var(--ink-soft); margin: 18px 0 6px 0; }
+.content p { margin: 0 0 14px 0; }
+.content ul, .content ol { margin: 0 0 18px 0; padding-left: 26px; }
+.content li { margin-bottom: 8px; }
+.content li > strong, .content em, .content strong { color: var(--ink); }
+/* ---------------- Callouts ---------------- */
+.callout {
+  background: var(--bg-callout);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
+.callout-head { font-weight: 650; color: var(--ink); }
+.callout.warm { border-left-color: var(--warm); }
+/* ---------------- Tables ---------------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 18px 0 26px 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+}
+thead th {
+  background: var(--rule-soft);
+  color: var(--ink-soft);
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink);
+  line-height: 1.5;
+}
+tbody tr:last-child td { border-bottom: none; }
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.pill.good { background: var(--good-bg); color: var(--good-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+/* ---------------- Footer ---------------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: var(--bg-card);
+}
+.site-footer p { margin: 0; }
+.site-footer a { color: var(--ink-soft); }
+/* ---------------- Print fallback ---------------- */
+@media print {
+  .hero { background: none; padding: 24pt 0 12pt; }
+  .toc, .site-footer { display: none; }
+  .layout { display: block; padding: 0; }
+  .content { max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__inner">
+    <span class="kicker">synvert xgeeks · Leadership analysis · v1</span>
+    <h1>KCD Porto 2026: a strategic asset we own</h1>
+    <p class="hero__subtitle">How a deliberate six-year bet on community, expertise and content became Iberia's #1 Cloud Native + DevOps event — and what it returns to the business.</p>
+    <p class="hero__lede">This is the full case the deck distils. KCD Porto is not a sponsorship we buy or a conference we attend — it is a platform synvert xgeeks created, runs, and controls. It turns community into credibility, and credibility into business impact: positioning, qualified leads, talent, and brand reach that competitors cannot replicate.</p>
+    <p class="hero__meta"><span>Prepared 2026-06-24</span><span>KCD Porto × DevOps Days Portugal · 19–20 Nov 2026</span><span><a href="index.html">Slide deck →</a></span></p>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc__title">Contents</p>
+    <ol>
+      <li><a href="#thesis"><span class="toc__num">1.</span>The thesis</a></li>
+      <li><a href="#story"><span class="toc__num">2.</span>How we built it</a></li>
+      <li><a href="#record"><span class="toc__num">3.</span>The track record</a></li>
+      <li><a href="#moat"><span class="toc__num">4.</span>The CNCF moat</a></li>
+      <li><a href="#merger"><span class="toc__num">5.</span>The 2026 merger</a></li>
+      <li><a href="#impact"><span class="toc__num">6.</span>Business impact</a></li>
+      <li><a href="#model"><span class="toc__num">7.</span>The financial model</a></li>
+      <li><a href="#vision"><span class="toc__num">8.</span>Where it goes next</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <section id="thesis">
+      <h2><span class="section-num">1.</span>The thesis: we own the platform</h2>
+      <p>Most companies pay to appear at someone else's conference — a booth, a slot, a logo on a banner. They compete for visibility on a stage they don't control. <strong>synvert xgeeks does the opposite.</strong> We created KCD Porto, we run it, and we shape it. We own the audience, the content, and the entire experience.</p>
+      <p>That distinction is the whole argument. When you own the platform, visibility is no longer something you buy at a premium and hope converts — it is something you manufacture, target, and compound. The event stops being a marketing expense and becomes a <em>strategic asset</em>.</p>
+      <div class="callout">
+        <span class="callout-head">The bottom line.</span> KCD Porto turns community into credibility, and credibility into business impact — a category-ownership position at the national level that no competitor in Iberia holds.
+      </div>
+      <p>It works for the business in four distinct ways, each covered below: a <strong>positioning engine</strong>, a <strong>business-development channel</strong>, a <strong>talent magnet</strong>, and a <strong>brand amplifier</strong>.</p>
+    </section>
+
+    <section id="story">
+      <h2><span class="section-num">2.</span>How we built it — a deliberate six-year bet</h2>
+      <p>The asset was not an accident. It was a sequenced bet on expertise, community and content, born from a concrete commercial problem.</p>
+      <h3>2.1  The positioning problem</h3>
+      <p>synvert xgeeks was primarily positioned around engineering <em>capacity</em>. But clients stopped buying capacity alone — they wanted real technical expertise, especially in Cloud Native enablement. The question became: how do we reposition from "a software house" to a recognised technical authority?</p>
+      <h3>2.2  The answer was community</h3>
+      <p>We understood something fundamental: <strong>you don't build authority in tech without a community, and you don't attract top leads without being visible in that community.</strong> So we built through content — meetups (Cloud Native Lisboa and Porto) and deep, engineering-led talks. Credibility in action, not in claims.</p>
+      <h3>2.3  Validation, then trust</h3>
+      <ul>
+        <li><strong>CNCF certification (2023)</strong> — external validation via the Cloud Native Computing Foundation. We started winning projects with large enterprises.</li>
+        <li><strong>CNCF trust</strong> — consistency led to trust, and CNCF trusted us to organise Kubernetes Community Days (KCD) in Portugal: a global, internationally recognised format. A strong signal that we were now a credible actor in the ecosystem.</li>
+      </ul>
+      <div class="callout"><span class="callout-head">From zero to #1 in two years.</span> In 2024 we started from scratch — no legacy, no existing audience. By 2025, KCD Porto had become Iberia's largest Cloud Native event. Three things made it: community, expertise, and flawless execution.</div>
+    </section>
+
+    <section id="record">
+      <h2><span class="section-num">3.</span>The track record — KCD Porto 2025</h2>
+      <p>Three years running, consistent growth, self-funded, and built and managed by synvert xgeeks. The numbers carry the argument.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Metric</th><th>2025 result</th><th>Trend</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attendees</strong></td><td>329 (95% show-up rate)</td><td><span class="pill good">+39% vs 2024</span></td></tr>
+          <tr><td><strong>Companies represented</strong></td><td>120+ (CTOs, platform engineers, architects)</td><td><span class="pill good">growing</span></td></tr>
+          <tr><td><strong>Paid sponsors</strong></td><td>16</td><td><span class="pill good">+129% (from 7)</span></td></tr>
+          <tr><td><strong>Sponsor revenue</strong></td><td>€63.5k</td><td><span class="pill good">+176% vs €23k</span></td></tr>
+          <tr><td><strong>Countries represented</strong></td><td>26</td><td><span class="pill good">international</span></td></tr>
+          <tr><td><strong>Net margin</strong></td><td>+€2.3k, plus €10k carry-over buffer</td><td><span class="pill good">self-funded</span></td></tr>
+        </tbody>
+      </table></div>
+      <h3>3.1  The road to #1</h3>
+      <p>The trajectory: <strong>2019</strong> Cloud Native Lisboa (community built) → <strong>2023</strong> CNCF Silver Membership and first enterprise wins → <strong>2024</strong> KCD Porto born (240 attendees, 7 sponsors) → <strong>2025</strong> #1 in Iberia (330 attendees, 26 countries, 16 sponsors, +176% revenue) → <strong>2026</strong> the landmark event.</p>
+    </section>
+
+    <section id="moat">
+      <h2><span class="section-num">4.</span>The CNCF moat</h2>
+      <p>The defensibility comes from a structural scarcity that competitors cannot simply spend their way past.</p>
+      <h3>4.1  CNCF Silver Member</h3>
+      <p>synvert xgeeks holds CNCF Silver Membership — one of the few Portuguese companies with this status. It is not a badge; it is an investment that unlocks influence, visibility and trust in the global cloud native community. With 98% of organisations adopting cloud native techniques and 82% running Kubernetes in production, being embedded in CNCF puts us at the centre of where the industry is heading.</p>
+      <h3>4.2  Only KCD in Iberia</h3>
+      <p>We organise the only two official CNCF meetups in Portugal — Cloud Native Lisbon and Cloud Native Porto. CNCF is increasingly selective about host cities, and Portugal was chosen again on track record, community feedback and execution quality. KCD Porto is the <strong>only KCD in Portugal and the Iberian Peninsula</strong>, at CNCF Tier 2 — the highest category allowed (max 500 pax), deliberately positioned not to compete with KubeCon.</p>
+      <div class="callout warm"><span class="callout-head">Why it's a moat, not just a badge.</span> It took six years to build. Competition for host status is fierce, and we were chosen again. Credibility of this kind cannot be shortcut — which is exactly why it is a durable competitive position.</div>
+    </section>
+
+    <section id="merger">
+      <h2><span class="section-num">5.</span>The 2026 merger with DevOps Days Portugal</h2>
+      <p>DevOps Days is a global conference series founded in Ghent in 2009 — 200+ editions across 40+ countries, a reference in the DevOps world. DevOps Days Portugal had run events in Porto before, and they approached us to join forces, recognising the scale and quality we had built.</p>
+      <p>The result: <strong>synvert xgeeks is now the legal entity behind two of the most recognised tech conference brands in Portugal</strong>, both with international reach. That is not just brand visibility — it is institutional weight.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>2026 event</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Date</strong></td><td>19–20 November 2026</td></tr>
+          <tr><td><strong>Venue</strong></td><td>Super Bock Arena / Palácio de Cristal, Porto</td></tr>
+          <tr><td><strong>Attendees</strong></td><td>500+ estimated · 150+ companies</td></tr>
+          <tr><td><strong>Content</strong></td><td>50+ speakers · 4+ keynotes · multiple tracks</td></tr>
+        </tbody>
+      </table></div>
+      <p>The venue itself reinforces the platform: a 500+ capacity main auditorium for openings and keynotes, four breakout rooms for parallel sessions, a mandatory-passage sponsor foyer for maximum visibility, and the Crystal Palace gardens for networking.</p>
+    </section>
+
+    <section id="impact">
+      <h2><span class="section-num">6.</span>Business impact — a controlled environment for outcomes</h2>
+      <p>Because we are the organisers, the outcomes are curated rather than accidental. We facilitate warm introductions before, during and after the event.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Lever</th><th>Target outcome</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lead generation</strong></td><td>20–30 qualified contacts from 150+ companies in the room</td></tr>
+          <tr><td><strong>Brand visibility</strong></td><td>~80K organic social reach · logo on all materials · stage presence</td></tr>
+          <tr><td><strong>Thought leadership</strong></td><td>3+ specialised talks generating direct inbound post-event</td></tr>
+          <tr><td><strong>Client engagement</strong></td><td>5+ target clients at the event · 2+ upsell conversations</td></tr>
+          <tr><td><strong>Talent attraction</strong></td><td>50+ profile connections from 500+ professionals over two days — no recruiting spend</td></tr>
+          <tr><td><strong>Ecosystem control</strong></td><td>30+ meetups organised year-round, amplifying the synvert xgeeks brand</td></tr>
+        </tbody>
+      </table></div>
+      <p>The strategic framing: market positioning (the leading Cloud Native authority in Iberia), control advantage (we create visibility instead of competing for it), efficient pipeline generation with pre-qualified decision-makers, employer-of-choice positioning, and differentiation a competitor cannot replicate.</p>
+    </section>
+
+    <section id="model">
+      <h2><span class="section-num">7.</span>The financial model — low risk, compounding upside</h2>
+      <p>The event is largely self-funded via sponsors and tickets. synvert xgeeks is the legal entity and may need to front initial costs, but returns come through sponsor fees and ticket sales — and a €10k carry-over buffer from 2025 is already in place.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>2026 financial picture (most likely)</th><th>EUR</th></tr></thead>
+        <tbody>
+          <tr><td>Sponsor revenue</td><td>€92,250</td></tr>
+          <tr><td>Ticket revenue</td><td>€30,000</td></tr>
+          <tr><td>Total estimated revenue</td><td>€110k – €130k</td></tr>
+          <tr><td>Estimated operating costs</td><td>€100k – €121k</td></tr>
+          <tr><td><strong>Expected margin</strong></td><td><strong>€10k – €15k</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p>The 2026 sponsor pipeline is already moving: <strong>Komodor closed (Platinum)</strong>, an AWS call scheduled (Gold/Platinum), Fortinet in progress, and decisions awaited from MC Digital, Farfetch and Critical Manufacturing — with 50+ companies contacted in the active pipeline.</p>
+      <div class="callout"><span class="callout-head">Cost vs. return.</span> Low financial risk, high strategic upside. Each edition compounds the asset — the audience, the brand, and the pipeline all carry forward.</div>
+    </section>
+
+    <section id="vision">
+      <h2><span class="section-num">8.</span>Where it goes next</h2>
+      <p>The long-term vision innovates within the format rather than abandoning it.</p>
+      <ul>
+        <li><strong>Continue at Tier 2 in Porto</strong> — the maximum CNCF allows, designed not to compete with KubeCon. Innovate within it: stronger international keynotes, thought-leadership tracks, community tracks, more gamification.</li>
+        <li><strong>International keynotes</strong> — attract more global names from the CNCF ecosystem, elevating KCD Porto from a national event to a European reference for cloud native practitioners.</li>
+        <li><strong>Thought-leadership track</strong> — a dedicated track for CTOs, VPs of Engineering and decision-makers, more closely aligned with business strategy than technical depth alone.</li>
+        <li><strong>Community track &amp; gamification</strong> — deeper engagement and retention across the whole year.</li>
+        <li><strong>Annual anchor event</strong> — solidify KCD Porto as the go-to annual Cloud Native + DevOps event in Portugal.</li>
+      </ul>
+      <div class="callout warm"><span class="callout-head">The long bet: beyond KCD.</span> The KCD and CNCF brands have limits. synvert xgeeks could create a <strong>Cloud Native Day Europe</strong> — or partner with existing KCDs across Europe — to build a European-scale event with synvert xgeeks at the centre.</div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>Leadership analysis · KCD Porto 2026 × DevOps Days Portugal · synvert xgeeks.</p>
+  <p style="margin-top: 10px;"><a href="index.html">↑  Switch to deck view</a></p>
+</footer>
+
+<script>
+// Sticky-TOC active-section highlighter using IntersectionObserver.
+(function () {
+  const sections = Array.from(document.querySelectorAll(".content > section[id]"));
+  const links = new Map(
+    Array.from(document.querySelectorAll(".toc a[href^='#']"))
+      .map(a => [a.getAttribute("href").slice(1), a])
+  );
+  if (!sections.length || !links.size) return;
+  const setActive = (id) => {
+    links.forEach((a, key) => a.classList.toggle("is-active", key === id));
+  };
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

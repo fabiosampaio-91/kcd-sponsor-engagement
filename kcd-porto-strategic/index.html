@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KCD Porto 2026 — A Strategic Asset · synvert xgeeks</title>
+<meta name="description" content="The leadership case for KCD Porto 2026: how synvert xgeeks turned Iberia's #1 Cloud Native + DevOps event into a positioning engine, business-development channel, talent magnet, and brand amplifier.">
+<meta name="theme-color" content="#03161a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
+  --ink:#ffffff; --ink-2:#c7d8d4; --ink-3:#7f9591; --ink-4:#4c6562;
+  --line:#143034; --line-2:#1f4247;
+  --accent:#00EBB6; --accent-dim:#11b89a; --accent-deep:#064a40;
+  --warm:#ff966e;
+  --good:#00EBB6; --good-bg:rgba(0,235,182,0.12);
+  --bad:#f87171; --bad-bg:rgba(248,113,113,0.12);
+  --warn:#fbbf24; --warn-bg:rgba(251,191,36,0.12);
+  --display:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --sans:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+/* ─── Reset & base ───────────────────────────────────────────────────────── */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:#000; color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+html { scroll-behavior:smooth; }
+body { min-height:100vh; scroll-snap-type:y mandatory; overflow-y:scroll; overscroll-behavior:contain; }
+.deck { display:block; }
+/* ─── Slide shell ────────────────────────────────────────────────────────── */
+.slide { position:relative; min-height:100vh; background:var(--bg); scroll-snap-align:start; scroll-snap-stop:always; overflow:hidden; display:flex; flex-direction:column; }
+.slide::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 1200px 800px at 8% -10%, rgba(0,235,182,0.08), transparent 60%), radial-gradient(ellipse 900px 600px at 95% 100%, rgba(0,235,182,0.05), transparent 60%); pointer-events:none; z-index:0; }
+.frame { position:relative; flex:1; padding:100px 92px 70px; display:flex; flex-direction:column; z-index:1; max-width:1520px; margin:0 auto; width:100%; }
+/* ─── Chrome (top bar) ───────────────────────────────────────────────────── */
+.chrome { position:absolute; top:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:center; z-index:2; font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); }
+.chrome .dot { display:inline-block; width:6px; height:6px; background:var(--accent); border-radius:999px; margin:0 12px 2px; vertical-align:middle; box-shadow:0 0 12px rgba(0,235,182,0.6); }
+.chrome__right { display:flex; align-items:center; gap:16px; }
+.chrome__mark { font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:0.04em; text-transform:none; color:var(--ink); }
+.chrome__mark b { color:var(--accent); font-weight:600; }
+.chrome__pageno { border-left:1px solid var(--line-2); padding-left:16px; color:var(--ink-3); }
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+.kicker { font-family:var(--mono); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:14px; margin:0 0 22px 0; }
+.kicker::before { content:''; width:32px; height:1px; background:var(--accent); }
+.display { font-family:var(--display); font-weight:400; line-height:0.98; letter-spacing:-0.025em; color:var(--ink); margin:0; }
+.display em, .display i { font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:-0.015em; }
+.display .accent { color:var(--accent); }
+h1.display { font-size:clamp(40px,6.2vw,90px); }
+h2.display { font-size:clamp(28px,4.4vw,58px); }
+.subhead { font-family:var(--display); font-weight:300; font-size:clamp(17px,1.85vw,23px); line-height:1.35; color:var(--ink-2); margin:18px 0 0 0; max-width:980px; }
+.subhead em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+.subhead strong { font-weight:500; color:var(--ink); }
+.body-text { font-family:var(--display); font-weight:400; font-size:15.5px; line-height:1.6; color:var(--ink-2); max-width:920px; }
+.body-text strong { color:var(--ink); font-weight:500; }
+.body-text em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+.accent-text { color:var(--accent); } .warm-text { color:var(--warm); } .muted { color:var(--ink-3); }
+.plain { font-family:var(--display); font-size:13px; line-height:1.5; color:var(--ink-3); border-left:2px solid var(--accent-dim); padding:4px 0 4px 14px; margin:14px 0 0; max-width:980px; }
+.plain b { color:var(--ink-2); font-weight:500; }
+.pull-quote { font-family:var(--display); font-weight:300; font-size:clamp(24px,3.5vw,44px); line-height:1.15; letter-spacing:-0.02em; color:var(--ink); max-width:1140px; margin:0; }
+.pull-quote em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+/* ─── Bottom bar ─────────────────────────────────────────────────────────── */
+.slide__bottom { position:absolute; bottom:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-4); z-index:2; }
+.slide__bottom .hint { display:flex; align-items:center; gap:10px; }
+.slide__bottom .hint .arrow { display:inline-block; width:18px; height:1px; background:var(--ink-4); position:relative; }
+.slide__bottom .hint .arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-right:1px solid var(--ink-4); border-bottom:1px solid var(--ink-4); transform:rotate(-45deg); }
+/* ─── Progress rail ──────────────────────────────────────────────────────── */
+.deck-progress { position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:5px; font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-4); }
+.deck-progress a { color:inherit; text-decoration:none; display:flex; align-items:center; gap:9px; padding:2px 0; cursor:pointer; transition:color 200ms; }
+.deck-progress a:hover { color:var(--ink-2); }
+.deck-progress a::before { content:''; width:16px; height:1px; background:var(--line-2); transition:background 200ms,width 200ms; }
+.deck-progress a.is-active { color:var(--accent); }
+.deck-progress a.is-active::before { background:var(--accent); width:28px; }
+/* ─── Cover helpers ──────────────────────────────────────────────────────── */
+.cover-slot { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
+.cover-meta { font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:16px; flex-wrap:wrap; }
+.cover-meta span + span::before { content:'·'; margin-right:16px; color:var(--ink-4); }
+/* ─── Grids ──────────────────────────────────────────────────────────────── */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.divider { height:1px; background:var(--line-2); margin:24px 0; }
+.divider--accent { background:linear-gradient(90deg,var(--accent),transparent); }
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card { background:var(--bg-2); border:1px solid var(--line-2); padding:20px 22px; border-radius:4px; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--line-2),transparent); }
+.card .card-num { font-family:var(--display); font-weight:300; font-size:38px; line-height:0.9; color:var(--ink-4); letter-spacing:-0.02em; }
+.card .card-label { font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); margin-top:12px; font-weight:500; }
+.card .card-body { font-size:13px; color:var(--ink-2); line-height:1.5; margin-top:8px; }
+.card.is-accent { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.07),var(--bg-2)); }
+.card.is-accent .card-num { color:var(--accent); }
+.card.is-warm { border-color:var(--warm); background:linear-gradient(180deg,rgba(255,150,110,0.07),var(--bg-2)); }
+.card.is-warm .card-num { color:var(--warm); }
+/* ─── KPIs ───────────────────────────────────────────────────────────────── */
+.kpi { background:var(--bg-2); border:1px solid var(--line-2); padding:22px 24px; border-radius:4px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden; }
+.kpi::after { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent 80%); }
+.kpi .kpi-label { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.kpi .kpi-value { font-family:var(--display); font-weight:400; font-size:48px; line-height:1; color:var(--ink); letter-spacing:-0.025em; margin-top:6px; }
+.kpi .kpi-value em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+.kpi .kpi-sub { font-family:var(--mono); font-size:12px; color:var(--ink-3); margin-top:4px; }
+/* ─── Lanes (two-track) ──────────────────────────────────────────────────── */
+.lanes { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:24px; }
+.lane { border:1px solid var(--line-2); border-radius:6px; padding:22px 24px; background:var(--bg-2); }
+.lane.a { border-top:3px solid var(--warm); } .lane.b { border-top:3px solid var(--accent); }
+.lane .lane-role { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.lane .lane-title { font-family:var(--display); font-weight:500; font-size:20px; color:var(--ink); margin:6px 0 12px; }
+.lane.a .lane-title { color:var(--warm); } .lane.b .lane-title { color:var(--accent); }
+.lane ul { margin:0; padding-left:18px; } .lane li { font-size:13.5px; color:var(--ink-2); line-height:1.5; margin-bottom:7px; }
+/* ─── Rule strip ─────────────────────────────────────────────────────────── */
+.rule-strip { margin-top:22px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.rule-strip .rule-item { border:1px solid var(--line-2); border-radius:4px; padding:14px 16px; background:var(--bg-2); }
+.rule-strip .rule-n { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.12em; }
+.rule-strip .rule-t { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-top:7px; line-height:1.35; }
+.rule-strip .rule-d { font-size:11.5px; color:var(--ink-3); line-height:1.45; margin-top:5px; }
+/* ─── Data table ─────────────────────────────────────────────────────────── */
+.dt { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12.5px; }
+.dt .dt-h, .dt .dt-r { display:grid; align-items:center; }
+.dt .dt-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 16px; }
+.dt .dt-r { padding:10px 16px; border-top:1px solid var(--line); background:var(--bg-2); color:var(--ink-2); }
+.dt .dt-r b { color:var(--ink); font-weight:500; }
+/* ─── Status chips ───────────────────────────────────────────────────────── */
+.heat { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; display:inline-block; }
+.heat.hot { color:var(--warm); border:1px solid var(--warm); }
+.heat.warm { color:var(--warn); border:1px solid rgba(251,191,36,0.5); }
+.heat.cold { color:var(--ink-3); border:1px solid var(--line-2); }
+.tag-pill { font-family:var(--mono); font-size:10px; letter-spacing:0.05em; padding:1px 8px; border-radius:999px; }
+.tag-pill.cli { color:var(--accent); border:1px solid var(--accent-dim); }
+.tag-pill.par { color:var(--warm); border:1px solid var(--warm); }
+.tag-pill.com { color:var(--ink-3); border:1px solid var(--line-2); }
+.tag-pill.yes { color:var(--accent); border:1px solid var(--accent-dim); }
+.tag-pill.no  { color:var(--ink-3); border:1px solid var(--line-2); }
+/* ─── State matrix ───────────────────────────────────────────────────────── */
+.smx { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; }
+.smx .smx-h, .smx .smx-r { display:grid; grid-template-columns:1.3fr 1fr 1.1fr 1.6fr; }
+.smx .smx-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); }
+.smx .smx-h > div, .smx .smx-r > div { padding:11px 16px; border-top:1px solid var(--line); }
+.smx .smx-r { background:var(--bg-2); font-size:12.5px; color:var(--ink-2); line-height:1.4; }
+.smx .smx-r .st { font-family:var(--display); font-weight:500; color:var(--ink); }
+.smx .smx-r b { color:var(--ink); font-weight:500; }
+.go-yes { color:var(--accent); font-weight:500; } .go-no { color:var(--bad); font-weight:500; } .go-soft { color:var(--warn); font-weight:500; }
+/* ─── Route-in schematic ─────────────────────────────────────────────────── */
+.schema { display:grid; grid-template-columns:1fr 64px 1fr; gap:0; align-items:center; margin-top:24px; }
+.schema .col-h { font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px; }
+.schema .routeins .col-h { color:var(--warm); } .schema .targets .col-h { color:var(--accent); }
+.schema .node { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:13px 16px; margin-bottom:10px; }
+.schema .node .nn { font-family:var(--display); font-weight:500; font-size:14px; color:var(--ink); }
+.schema .node .nr { font-size:11.5px; color:var(--ink-3); margin-top:2px; }
+.schema .routeins .node { border-left:3px solid var(--warm); }
+.schema .targets .node { border-left:3px solid var(--accent); }
+.schema .arrow-col { display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--accent); }
+.schema .arrow-col .ln { font-family:var(--mono); font-size:8.5px; letter-spacing:0.08em; color:var(--ink-3); text-transform:uppercase; text-align:center; }
+.schema .arrow-col .ar { font-size:22px; line-height:1; color:var(--accent); }
+/* ─── Person / bench ─────────────────────────────────────────────────────── */
+.bench { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px; }
+.person { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:13px 15px; }
+.person .pn { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
+.person .pr { font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin:3px 0 6px; }
+.person .pb { font-size:12px; color:var(--ink-2); line-height:1.45; }
+.person.open { border-left:3px solid var(--warm); } .person.open .pr { color:var(--warm); }
+.person.tech { border-left:3px solid var(--accent); }
+/* ─── Doors ──────────────────────────────────────────────────────────────── */
+.doors { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
+.door { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 17px; display:flex; flex-direction:column; gap:7px; }
+.door .door-phase { font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+.door .door-name { font-family:var(--display); font-weight:500; font-size:15.5px; color:var(--ink); line-height:1.2; }
+.door .door-body { font-size:11.5px; color:var(--ink-2); line-height:1.45; }
+.door.hot { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.06),var(--bg-2)); }
+/* ─── Segmentation table ─────────────────────────────────────────────────── */
+.segtable { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12px; }
+.segtable .seg-row { display:grid; grid-template-columns:150px 1fr; border-bottom:1px solid var(--line); }
+.segtable .seg-row:last-child { border-bottom:0; }
+.segtable .seg-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:12px 16px; display:flex; align-items:center; }
+.segtable .seg-h.client { color:var(--accent); } .segtable .seg-h.partner { color:var(--warm); } .segtable .seg-h.neutral { color:var(--ink-3); }
+.segtable .seg-names { padding:12px 16px; color:var(--ink-2); line-height:1.55; background:var(--bg-2); }
+.segtable .seg-names b { color:var(--ink); font-weight:500; } .segtable .seg-names .dual { color:var(--warm); }
+/* ─── Tiers ──────────────────────────────────────────────────────────────── */
+.tiers { display:flex; flex-direction:column; gap:11px; margin-top:18px; }
+.tier { display:grid; grid-template-columns:118px 1fr; gap:20px; align-items:center; background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 22px; }
+.tier.t1 { border-left:3px solid var(--accent); } .tier.reach { border-left:3px solid var(--warn); } .tier.t2 { border-left:3px solid var(--warm); } .tier.t3 { border-left:3px solid var(--ink-4); }
+.tier .tier-tag { font-family:var(--display); font-weight:500; font-size:18px; color:var(--ink); }
+.tier .tier-tag small { display:block; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-top:4px; }
+.tier .tier-body { font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+.tier .tier-body strong { color:var(--ink); font-weight:500; }
+/* ─── Account board ──────────────────────────────────────────────────────── */
+.board { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
+.acct { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 16px; display:flex; flex-direction:column; gap:6px; }
+.acct .acct-name { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
+.acct .acct-pain { font-size:11.5px; color:var(--ink-2); line-height:1.4; flex:1; }
+.acct .acct-status { font-family:var(--mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; }
+.acct .acct-status.closed { color:var(--accent); } .acct .acct-status.live { color:var(--warn); }
+/* ─── CRM tree ───────────────────────────────────────────────────────────── */
+.crm { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px; }
+.crm-col { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:20px 22px; }
+.crm-col.kcd { border-top:3px solid var(--accent); } .crm-col.meet { border-top:3px solid var(--warm); }
+.crm-col .crm-top { font-family:var(--display); font-weight:500; font-size:18px; margin-bottom:12px; }
+.crm-col.kcd .crm-top { color:var(--accent); } .crm-col.meet .crm-top { color:var(--warm); }
+.crm-col .lab { font-family:var(--mono); font-size:11px; color:var(--ink-2); padding:6px 0 6px 16px; border-left:1px solid var(--line-2); margin-left:4px; }
+.crm-col .lab b { color:var(--ink); }
+.crm-fields { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; padding:16px 20px; background:var(--bg-2); font-size:13px; color:var(--ink-2); line-height:1.6; }
+.crm-fields b { color:var(--ink); font-weight:500; }
+/* ─── Gantt ──────────────────────────────────────────────────────────────── */
+.gantt { margin-top:26px; border-top:1px solid var(--line-2); }
+.gantt-cols { display:grid; grid-template-columns:120px repeat(6,1fr); font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); padding:12px 0 14px; border-bottom:1px solid var(--line); }
+.gantt-cols span { text-align:center; } .gantt-cols span:first-child { text-align:left; }
+.gantt-row { display:grid; grid-template-columns:120px 1fr; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); }
+.gantt-row .gantt-lane-label { font-family:var(--display); font-weight:500; font-size:14px; }
+.gantt-row.a .gantt-lane-label { color:var(--warm); } .gantt-row.b .gantt-lane-label { color:var(--accent); }
+.gantt-track { position:relative; height:30px; }
+.bar { position:absolute; top:4px; height:22px; border-radius:4px; display:flex; align-items:center; padding:0 12px; font-size:11px; color:#03161a; font-weight:600; white-space:nowrap; overflow:hidden; }
+.bar.a { background:linear-gradient(90deg,var(--warm),#ffb594); } .bar.b { background:linear-gradient(90deg,var(--accent),#6ff3da); }
+.bar.ghost { background:var(--bg-3); border:1px dashed var(--line-2); color:var(--ink-3); }
+.event-flag { position:absolute; top:-8px; bottom:-8px; width:2px; background:var(--accent); }
+.event-flag span { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--accent); white-space:nowrap; }
+/* ─── Messages ───────────────────────────────────────────────────────────── */
+.msgwrap { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+.msg { border-left:2px solid var(--accent); background:var(--bg-2); padding:13px 18px; border-radius:0 4px 4px 0; margin-bottom:12px; }
+.msg .msg-label { font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+.msg .msg-text { font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--ink-2); line-height:1.5; }
+.msg .msg-text b { font-style:normal; color:var(--ink); }
+.redline { border-left-color:var(--bad); } .redline .msg-label { color:var(--bad); } .redline .msg-text { font-style:normal; font-family:var(--display); }
+/* ─── Tag row ────────────────────────────────────────────────────────────── */
+.tag-row { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px; }
+.tag-row .tag { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 18px; }
+.tag .tag-head { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-bottom:6px; }
+.tag .tag-body { font-size:11.5px; color:var(--ink-3); line-height:1.5; }
+/* ─── Reveal animation ───────────────────────────────────────────────────── */
+.fade-up { opacity:0; transform:translateY(18px); transition:opacity 700ms cubic-bezier(0.2,0.7,0.2,1),transform 700ms cubic-bezier(0.2,0.7,0.2,1); }
+.fade-up.in { opacity:1; transform:translateY(0); }
+.fade-up.d1 { transition-delay:90ms; } .fade-up.d2 { transition-delay:180ms; } .fade-up.d3 { transition-delay:270ms; } .fade-up.d4 { transition-delay:360ms; }
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width:1150px) {
+  .frame { padding:90px 46px 62px; }
+  .chrome, .slide__bottom { left:46px; right:46px; }
+  .grid-2, .lanes, .msgwrap, .crm { grid-template-columns:1fr; gap:22px; }
+  .grid-3, .bench { grid-template-columns:1fr; }
+  .grid-4, .board, .doors, .rule-strip { grid-template-columns:1fr 1fr; }
+  .tag-row { grid-template-columns:1fr 1fr; }
+  .smx .smx-h { display:none; } .smx .smx-r { grid-template-columns:1fr; gap:0; }
+  .schema { grid-template-columns:1fr; } .schema .arrow-col { flex-direction:row; padding:8px 0; }
+  .gantt-cols, .gantt-row { grid-template-columns:90px 1fr; } .gantt-cols span:not(:first-child) { display:none; }
+  .segtable .seg-row, .dt .dt-h, .dt .dt-r { grid-template-columns:1fr !important; }
+  .deck-progress { display:none; }
+}
+@media (max-width:700px) {
+  .frame { padding:78px 20px 54px; }
+  .chrome, .slide__bottom { left:20px; right:20px; font-size:10px; }
+  .grid-4, .board, .doors, .rule-strip, .tag-row, .bench { grid-template-columns:1fr; }
+  .tier { grid-template-columns:1fr; gap:8px; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .fade-up { transition:none; opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<nav class="deck-progress" aria-label="Deck progress">
+  <a href="#s1" data-target="s1"><span>001</span></a>
+  <a href="#s2" data-target="s2"><span>002</span></a>
+  <a href="#s3" data-target="s3"><span>003</span></a>
+  <a href="#s4" data-target="s4"><span>004</span></a>
+  <a href="#s5" data-target="s5"><span>005</span></a>
+  <a href="#s6" data-target="s6"><span>006</span></a>
+  <a href="#s7" data-target="s7"><span>007</span></a>
+  <a href="#s8" data-target="s8"><span>008</span></a>
+  <a href="#s9" data-target="s9"><span>009</span></a>
+  <a href="#s10" data-target="s10"><span>010</span></a>
+  <a href="#s11" data-target="s11"><span>011</span></a>
+  <a href="#s12" data-target="s12"><span>012</span></a>
+</nav>
+
+<main class="deck">
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SLIDE SKELETON — copy this block for every new slide:
+
+  <section class="slide" id="sNN">
+    <div class="chrome">
+      <div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div>
+      <div class="chrome__right">
+        <span class="chrome__mark">synvert <b>xgeeks</b></span>
+        <span class="chrome__pageno">0NN / 0TT</span>
+      </div>
+    </div>
+    <div class="frame">
+      <p class="kicker fade-up">Eyebrow line</p>
+      <h2 class="display fade-up d1">Headline with <em>serif emphasis</em> and <span class="accent">accent</span>.</h2>
+      <p class="subhead fade-up d2">Supporting sentence.</p>
+      ... content components with fade-up d1..d4 for staggered reveal ...
+    </div>
+    <div class="slide__bottom">
+      <span>0NN · Section name</span>
+      <span class="hint">Next teaser <span class="arrow"></span></span>
+    </div>
+  </section>
+
+  When you add a slide:
+  1. Add <a href="#sNN" data-target="sNN"><span>0NN</span></a> to .deck-progress above.
+  2. Update chrome__pageno and slide__bottom counts on all slides.
+═══════════════════════════════════════════════════════════════ -->
+
+
+<!-- 001 Cover -->
+<section class="slide" id="s1">
+  <div class="chrome">
+    <div class="chrome__left">KCD PORTO 2026 <span class="dot"></span> LEADERSHIP BRIEF</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">001 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Leadership · 19–20 Nov 2026 · Porto</p>
+    <h1 class="display fade-up d1">KCD Porto is not<br>an event. It's a<br><em>strategic asset</em> we <span class="accent">own.</span></h1>
+    <p class="subhead fade-up d2">We created and lead <strong>Iberia's most relevant Cloud Native + DevOps event</strong> — turning community into credibility, and credibility into business impact. This is the case for what we built and where it goes next.</p>
+    <div class="cover-slot fade-up d3">
+      <div class="cover-meta">
+        <span>12 slides</span>
+        <span>~6 minute read</span>
+        <span>KCD Porto × DevOps Days Portugal</span>
+        <span><a href="analysis.html" style="color:var(--accent);text-decoration:none;">Full analysis →</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>Scroll, arrow keys, or click the index to navigate</span>
+    <span class="hint">Begin <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 002 The thesis -->
+<section class="slide" id="s2">
+  <div class="chrome">
+    <div class="chrome__left">THE THESIS <span class="dot"></span> WHY THIS MATTERS</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">002 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">We're not just present at the event</p>
+    <h2 class="display fade-up d1">We <em>created</em> it. We <em>run</em> it. We <span class="accent">shape</span> it.</h2>
+    <p class="subhead fade-up d2">Most companies pay to appear at someone else's conference. We own the platform — the audience, the content, and the entire experience. That's a position no competitor in Iberia can buy.</p>
+
+    <div class="grid-3 fade-up d3" style="margin-top:42px;">
+      <div class="card is-accent">
+        <div class="card-num">01</div>
+        <div class="card-label">We created it</div>
+        <div class="card-body">Main organizer and driving force behind KCD Porto since day one — built deliberately over six years.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-label">We run it</div>
+        <div class="card-body">Curators of content, speakers, attendees and experience. The legal entity behind the event.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-label">We shape it</div>
+        <div class="card-body">Built by us, with the community and for the community — so it compounds, edition after edition.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>The shift:</b> from "a software house" to a recognized technical authority — by controlling the room instead of competing for a slot in it.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>002 · The thesis</span>
+    <span class="hint">How we built it <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 003 The story — how we built it -->
+<section class="slide" id="s3">
+  <div class="chrome">
+    <div class="chrome__left">THE STORY <span class="dot"></span> A 6-YEAR BET</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">003 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">How we built Iberia's #1 Cloud Native + DevOps event</p>
+    <h2 class="display fade-up d1">A deliberate bet on <em>expertise, community,</em> and <span class="accent">content.</span></h2>
+
+    <div class="rule-strip fade-up d2" style="margin-top:38px; grid-template-columns:repeat(5,1fr);">
+      <div class="rule-item">
+        <div class="rule-n">01</div>
+        <div class="rule-t">The positioning problem</div>
+        <div class="rule-d">Clients stopped buying hiring capacity. They wanted real technical expertise — especially Cloud Native enablement.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">02</div>
+        <div class="rule-t">The need for community</div>
+        <div class="rule-d">You don't build authority in tech without a community — and you don't attract top leads without being visible in it.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">03</div>
+        <div class="rule-t">Build through content</div>
+        <div class="rule-d">Meetups (Cloud Native Lisboa / Porto) and deep, engineering-led talks. Credibility in action.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">04</div>
+        <div class="rule-t">CNCF certification</div>
+        <div class="rule-d">External validation via the Cloud Native Computing Foundation. We started winning large-enterprise projects.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">05</div>
+        <div class="rule-t">CNCF trust</div>
+        <div class="rule-d">CNCF trusted us to organize Kubernetes Community Days in Portugal — a global, internationally recognized format.</div>
+      </div>
+    </div>
+
+    <div class="divider fade-up d3" style="margin-top:34px;"></div>
+    <p class="pull-quote fade-up d4" style="font-size:clamp(20px,2.4vw,30px); margin-top:18px;">In 2024 we started from zero — no legacy, no audience. By 2025, KCD Porto was <em>Iberia's largest Cloud Native event.</em></p>
+  </div>
+  <div class="slide__bottom">
+    <span>003 · The story</span>
+    <span class="hint">The numbers <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 004 Track record -->
+<section class="slide" id="s4">
+  <div class="chrome">
+    <div class="chrome__left">TRACK RECORD <span class="dot"></span> KCD PORTO 2025</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">004 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Three years running — consistent growth, self-funded</p>
+    <h2 class="display fade-up d1">The numbers <em>speak for themselves.</em></h2>
+
+    <div class="grid-3 fade-up d2" style="margin-top:36px; gap:16px;">
+      <div class="kpi">
+        <span class="kpi-label">Attendees in 2025</span>
+        <span class="kpi-value"><em>329</em></span>
+        <span class="kpi-sub">+39% vs 2024 · 95% show-up rate</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Companies represented</span>
+        <span class="kpi-value">120+</span>
+        <span class="kpi-sub">CTOs, platform engineers, architects</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Paid sponsors</span>
+        <span class="kpi-value">16</span>
+        <span class="kpi-sub">+129% vs 2024 (from 7)</span>
+      </div>
+    </div>
+    <div class="grid-3 fade-up d3" style="margin-top:16px; gap:16px;">
+      <div class="kpi">
+        <span class="kpi-label">Sponsor revenue 2025</span>
+        <span class="kpi-value"><em>€63.5k</em></span>
+        <span class="kpi-sub">+176% vs 2024 (€23k)</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Countries represented</span>
+        <span class="kpi-value">26</span>
+        <span class="kpi-sub">genuine international reach</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Net positive margin</span>
+        <span class="kpi-value">+€2.3k</span>
+        <span class="kpi-sub">plus €10k carry-over buffer</span>
+      </div>
+    </div>
+    <p class="plain fade-up d4"><b>Built and managed by synvert xgeeks.</b> Self-funded via sponsors and tickets — growth came with positive margin, not subsidy.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>004 · Track record</span>
+    <span class="hint">The road to #1 <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 005 Timeline / road to #1 -->
+<section class="slide" id="s5">
+  <div class="chrome">
+    <div class="chrome__left">THE ROAD <span class="dot"></span> 2019 → 2026</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">005 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Making KCD Porto a landmark event</p>
+    <h2 class="display fade-up d1">The road to <span class="accent">#1 in Iberia.</span></h2>
+
+    <div class="grid-3 fade-up d2" style="margin-top:36px; gap:16px;">
+      <div class="card">
+        <div class="card-num">2019</div>
+        <div class="card-label">Community built</div>
+        <div class="card-body">Cloud Native Lisboa — the first move. Authority starts with showing up.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">2023</div>
+        <div class="card-label">CNCF certified</div>
+        <div class="card-body">CNCF Silver Membership. First enterprise wins follow.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">2024</div>
+        <div class="card-label">KCD Porto born</div>
+        <div class="card-body">240 attendees, 7 sponsors. Started from scratch.</div>
+      </div>
+    </div>
+    <div class="grid-2 fade-up d3" style="margin-top:16px; gap:16px;">
+      <div class="card is-accent">
+        <div class="card-num">2025</div>
+        <div class="card-label">#1 in Iberia</div>
+        <div class="card-body">330 attendees · 26 countries · 16 sponsors · +176% sponsor revenue.</div>
+      </div>
+      <div class="card is-warm">
+        <div class="card-num">2026</div>
+        <div class="card-label">The landmark event</div>
+        <div class="card-body">500+ attendees · 20+ sponsors · merged with DevOps Days Portugal. Portugal's biggest Cloud Native event.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d4"><b>From zero to #1 in two years.</b> Three things: community, expertise, flawless execution.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>005 · The road to #1</span>
+    <span class="hint">The CNCF moat <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 006 CNCF moat -->
+<section class="slide" id="s6">
+  <div class="chrome">
+    <div class="chrome__left">THE MOAT <span class="dot"></span> CNCF & SCARCITY</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">006 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">A strategic partnership that underpins everything we do in cloud</p>
+    <h2 class="display fade-up d1">Credibility competitors <em>cannot replicate.</em></h2>
+
+    <div class="lanes fade-up d2" style="margin-top:30px;">
+      <div class="lane b">
+        <div class="lane-role">The badge</div>
+        <div class="lane-title">CNCF Silver Member</div>
+        <ul>
+          <li>One of the few Portuguese companies with this status.</li>
+          <li>Not a logo — an investment that unlocks influence, visibility and trust in the global cloud native community.</li>
+          <li>98% of organisations have adopted cloud native; 82% run Kubernetes in production. We sit at the center of where the industry is heading.</li>
+        </ul>
+      </div>
+      <div class="lane a">
+        <div class="lane-role">The scarcity</div>
+        <div class="lane-title">Only KCD in Iberia</div>
+        <ul>
+          <li>We organise the only two official CNCF meetups in Portugal: Cloud Native Lisbon &amp; Porto.</li>
+          <li>CNCF is increasingly selective about host cities — Portugal was chosen again on track record and execution quality.</li>
+          <li>CNCF Tier 2, the highest category allowed (max 500 pax). Competition is fierce, and we were chosen.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plain fade-up d3"><b>Why it's a moat:</b> it took six years to build. Category ownership at national level — a competitive position no one else holds.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>006 · The CNCF moat</span>
+    <span class="hint">The 2026 merger <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 007 The merger -->
+<section class="slide" id="s7">
+  <div class="chrome">
+    <div class="chrome__left">2026 <span class="dot"></span> THE MERGER</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">007 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Two global communities · one historic merger</p>
+    <h2 class="display fade-up d1">KCD Porto <span class="accent">×</span> <em>DevOps Days Portugal.</em></h2>
+    <p class="subhead fade-up d2">DevOps Days — a global series founded in Ghent in 2009, 200+ editions across 40+ countries — approached us to join forces, recognising the scale and quality we'd built. <strong>synvert xgeeks is now the legal entity behind two of the most recognised tech conference brands in Portugal.</strong></p>
+
+    <div class="grid-4 fade-up d3" style="margin-top:36px;">
+      <div class="kpi"><span class="kpi-label">Date</span><span class="kpi-value" style="font-size:30px;">19–20 Nov</span><span class="kpi-sub">2026</span></div>
+      <div class="kpi"><span class="kpi-label">Venue</span><span class="kpi-value" style="font-size:24px;">Super Bock Arena</span><span class="kpi-sub">Palácio de Cristal, Porto</span></div>
+      <div class="kpi"><span class="kpi-label">Attendees</span><span class="kpi-value"><em>500+</em></span><span class="kpi-sub">150+ companies</span></div>
+      <div class="kpi"><span class="kpi-label">Content</span><span class="kpi-value" style="font-size:30px;">50+</span><span class="kpi-sub">speakers · 4+ keynotes · multi-track</span></div>
+    </div>
+    <p class="plain fade-up d4"><b>Not just brand visibility — institutional weight.</b> Two communities, one landmark event.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>007 · The merger</span>
+    <span class="hint">What 2026 is <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 008 In 2026 we evolve again — what the event IS -->
+<section class="slide" id="s8">
+  <div class="chrome">
+    <div class="chrome__left">THE ASSET <span class="dot"></span> WHAT IT IS</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">008 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">More than an event — a strategic asset</p>
+    <h2 class="display fade-up d1">In 2026, the event <em>works for us</em> four ways.</h2>
+
+    <div class="grid-4 fade-up d2" style="margin-top:42px;">
+      <div class="card is-accent">
+        <div class="card-num">01</div>
+        <div class="card-label">Positioning engine</div>
+        <div class="card-body">Category ownership: the leading Cloud Native authority in Iberia, in the room and on the record.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">02</div>
+        <div class="card-label">Business dev channel</div>
+        <div class="card-body">A controlled environment full of pre-qualified decision-makers — with warm intros we facilitate.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">03</div>
+        <div class="card-label">Talent magnet</div>
+        <div class="card-body">500+ engineers, architects and CTOs in one space for two days. No recruiting spend needed.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">04</div>
+        <div class="card-label">Brand amplifier</div>
+        <div class="card-body">Stage presence, logo on all materials, ~80K organic social reach around the event.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d3"><b>What's coming:</b> 500+ expected attendees · 150+ companies represented · 20+ sponsors expected.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>008 · What the asset is</span>
+    <span class="hint">The business impact <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 009 Business impact -->
+<section class="slide" id="s9">
+  <div class="chrome">
+    <div class="chrome__left">BUSINESS IMPACT <span class="dot"></span> CONTROLLED OUTCOMES</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">009 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">A controlled environment for business outcomes</p>
+    <h2 class="display fade-up d1">What the room <em>returns.</em></h2>
+
+    <div class="grid-3 fade-up d2" style="margin-top:34px; gap:16px;">
+      <div class="kpi"><span class="kpi-label">Lead generation</span><span class="kpi-value"><em>20–30</em></span><span class="kpi-sub">qualified contacts from 150+ companies</span></div>
+      <div class="kpi"><span class="kpi-label">Brand visibility</span><span class="kpi-value">80K</span><span class="kpi-sub">organic social reach · logo · stage</span></div>
+      <div class="kpi"><span class="kpi-label">Thought-leadership talks</span><span class="kpi-value">3+</span><span class="kpi-sub">generating inbound post-event</span></div>
+    </div>
+    <div class="grid-3 fade-up d3" style="margin-top:16px; gap:16px;">
+      <div class="kpi"><span class="kpi-label">Client engagement</span><span class="kpi-value">5+</span><span class="kpi-sub">target clients · 2+ upsell talks</span></div>
+      <div class="kpi"><span class="kpi-label">Talent attraction</span><span class="kpi-value"><em>50+</em></span><span class="kpi-sub">profile connections in 2 days</span></div>
+      <div class="kpi"><span class="kpi-label">Ecosystem control</span><span class="kpi-value">30+</span><span class="kpi-sub">meetups year-round amplifying the brand</span></div>
+    </div>
+    <p class="plain fade-up d4"><b>Curated, not accidental.</b> Warm introductions before, during and after the event — facilitated because we're the organizers.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>009 · Business impact</span>
+    <span class="hint">The financial model <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 010 Financial model -->
+<section class="slide" id="s10">
+  <div class="chrome">
+    <div class="chrome__left">FINANCIAL MODEL <span class="dot"></span> SELF-SUSTAINING</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">010 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Low financial risk · high strategic upside</p>
+    <h2 class="display fade-up d1">A self-sustaining asset that <em>compounds.</em></h2>
+
+    <div class="grid-2 fade-up d2" style="margin-top:30px;">
+      <div>
+        <div class="dt" style="grid-template-columns:1fr;">
+          <div class="dt-h" style="grid-template-columns:1.4fr 1fr;"><div>2026 financial picture (most likely)</div><div style="text-align:right;">EUR</div></div>
+          <div class="dt-r" style="grid-template-columns:1.4fr 1fr;"><div>Sponsor revenue</div><div style="text-align:right;"><b>€92,250</b></div></div>
+          <div class="dt-r" style="grid-template-columns:1.4fr 1fr;"><div>Ticket revenue</div><div style="text-align:right;"><b>€30,000</b></div></div>
+          <div class="dt-r" style="grid-template-columns:1.4fr 1fr;"><div>Total estimated revenue</div><div style="text-align:right;"><b>€110k – 130k</b></div></div>
+          <div class="dt-r" style="grid-template-columns:1.4fr 1fr;"><div>Estimated operating costs</div><div style="text-align:right;"><b>€100k – 121k</b></div></div>
+          <div class="dt-r" style="grid-template-columns:1.4fr 1fr;"><div>Expected margin</div><div style="text-align:right;"><b class="accent-text">€10k – 15k</b></div></div>
+        </div>
+      </div>
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Why the risk is low</div>
+        <div class="card-body" style="margin-top:10px;">synvert xgeeks is the legal entity and may front initial costs — but returns come through sponsor fees and ticket sales, and a <strong>€10k carry-over buffer from 2025</strong> is already in place.</div>
+        <div class="card-body" style="margin-top:12px;">Sponsor pipeline already moving: <strong>Komodor closed (Platinum)</strong>, AWS call scheduled, 50+ companies contacted. Prominent positioning is guaranteed.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d3"><b>Cost vs. return:</b> largely self-funded via sponsors and tickets. Each edition compounds the asset.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>010 · Financial model</span>
+    <span class="hint">Future editions <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 011 Future editions -->
+<section class="slide" id="s11">
+  <div class="chrome">
+    <div class="chrome__left">THE VISION <span class="dot"></span> FUTURE EDITIONS</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">011 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Long-term vision — innovating within the format</p>
+    <h2 class="display fade-up d1">Where this goes <em>next.</em></h2>
+
+    <div class="doors fade-up d2" style="margin-top:30px;">
+      <div class="door">
+        <div class="door-phase">01 · Hold the line</div>
+        <div class="door-name">Continue at Tier 2</div>
+        <div class="door-body">The max CNCF allows — designed not to compete with KubeCon. Innovate within it.</div>
+      </div>
+      <div class="door">
+        <div class="door-phase">02 · Elevate</div>
+        <div class="door-name">International keynotes</div>
+        <div class="door-body">Global CNCF names as keynotes — from a national event to a European reference.</div>
+      </div>
+      <div class="door">
+        <div class="door-phase">03 · Go upmarket</div>
+        <div class="door-name">Thought-leadership track</div>
+        <div class="door-body">A dedicated track for CTOs and VPs of Engineering — aligned with business strategy.</div>
+      </div>
+      <div class="door">
+        <div class="door-phase">04 · Retain</div>
+        <div class="door-name">Community &amp; gamification</div>
+        <div class="door-body">Deeper community engagement and retention across the whole year.</div>
+      </div>
+    </div>
+    <div class="card is-warm fade-up d3" style="margin-top:18px;">
+      <div class="card-label" style="margin-top:0;">Beyond KCD · the long bet</div>
+      <div class="card-body">KCD and CNCF brands have limits. synvert xgeeks could create a <strong>Cloud Native Day Europe</strong> — or partner across existing KCDs — to build a European-scale event with us at the center.</div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>011 · Future editions</span>
+    <span class="hint">The position <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 012 Closing -->
+<section class="slide" id="s12">
+  <div class="chrome">
+    <div class="chrome__left">THE POSITION <span class="dot"></span> WHY IT HOLDS</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">012 / 012</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">The strategic bottom line</p>
+    <h2 class="display fade-up d1">Own the room, <em>own the category.</em></h2>
+
+    <div class="tag-row fade-up d2" style="grid-template-columns:repeat(3,1fr); margin-top:40px;">
+      <div class="tag">
+        <div class="tag-head">Control advantage</div>
+        <div class="tag-body">We create and control high-quality visibility instead of competing for it — right audience, high impact.</div>
+      </div>
+      <div class="tag">
+        <div class="tag-head">Differentiation</div>
+        <div class="tag-body">A CNCF-backed event built through community. Six years to build; competitors can't shortcut it.</div>
+      </div>
+      <div class="tag">
+        <div class="tag-head">Cost vs. return</div>
+        <div class="tag-body">Low financial risk, high strategic upside. Each edition compounds the asset.</div>
+      </div>
+    </div>
+
+    <div class="divider divider--accent fade-up d3" style="margin-top:46px;"></div>
+
+    <p class="pull-quote fade-up d3" style="font-size:clamp(22px,2.6vw,34px); margin-top:22px;">
+      KCD Porto turns community into credibility, and credibility into <em>business impact</em> — a position <span class="accent">no one else in Iberia holds.</span>
+    </p>
+
+    <div class="cover-slot fade-up d4" style="margin-top:26px;">
+      <div class="cover-meta">
+        <span>synvert xgeeks</span>
+        <span>KCD Porto × DevOps Days Portugal · 19–20 Nov 2026</span>
+        <span><a href="analysis.html" style="color:var(--accent);text-decoration:none;">Full analysis →</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>012 · The position</span>
+    <span>End · synvert xgeeks</span>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const links = new Map(Array.from(document.querySelectorAll('.deck-progress a')).map(a => [a.dataset.target, a]));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach((a, key) => a.classList.toggle('is-active', key === id));
+        e.target.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
+      }
+    });
+  }, { threshold: 0.4 });
+  slides.forEach(s => io.observe(s));
+  document.addEventListener('keydown', (ev) => {
+    if (!['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(ev.key)) return;
+    const cur = slides.findIndex(s => { const r = s.getBoundingClientRect(); return r.top >= -5 && r.top < window.innerHeight * 0.5; });
+    let next = cur;
+    if (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') next = Math.min(slides.length - 1, cur + 1);
+    if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') next = Math.max(0, cur - 1);
+    if (next !== cur && slides[next]) { ev.preventDefault(); slides[next].scrollIntoView({ behavior: 'smooth' }); }
+  });
+})();
+</script>
+</body>
+</html>
