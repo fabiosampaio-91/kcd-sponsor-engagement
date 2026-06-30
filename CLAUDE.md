@@ -19,14 +19,16 @@ _template/          Blank deck with full design system — copy this to start a 
 <deck-slug>/        Each folder is one self-contained presentation
   index.html        The deck (all CSS/JS inline; no external deps except Google Fonts)
   analysis.html     Long-form companion to the deck (CSS/JS inline; cross-linked with index.html)
-index.html          Root — currently the KCD sponsor engagement deck (first deck, at root)
+  revealjs/         Optional — reveal.js version for live presenting (keyboard nav, speaker notes, PDF)
+    index.html
+index.html          Root gallery — links to every deck with a .deck-card entry
 ```
 
 Every presentation ships **two** self-contained files: `index.html` (the deck) and
 `analysis.html` (the long-form document view that argues the full case). They cross-link to each
-other. The per-folder `analysis.html` inlines its CSS/JS — unlike the root KCD `analysis.html`,
-which still uses the shared `assets/` folder (see table below). New decks follow the inline,
-self-contained pattern.
+other. The per-folder `analysis.html` inlines its CSS/JS. New decks follow this self-contained
+pattern — the legacy `kcd-sponsor-engagement/analysis.html` is the only exception that still uses
+a shared `assets/` folder inside its own subfolder.
 
 **To add a new presentation:**
 1. Copy `_template/` to a new folder named after the deck (e.g., `team-offsite-2026/`) — both
@@ -37,14 +39,30 @@ self-contained pattern.
 3. Remove the `<!-- EDIT: ... -->` comments once the content is real.
 4. Commit & push. GitHub Pages serves `<repo-url>/<folder>/` automatically.
 
-The [new-presentation skill](.claude/skills/new-presentation/SKILL.md) automates all of this.
+The [new-presentation skill](.claude/skills/new-presentation/SKILL.md) automates all of this and
+optionally hands off to the [convert-to-revealjs skill](.claude/skills/convert-to-revealjs/SKILL.md)
+to produce a `<slug>/revealjs/index.html` version for live presenting.
 
 **Never** move CSS/JS out of the inline `<style>`/`<script>` blocks — each deck must be
 self-contained so it can be opened standalone without a server.
 
-## KCD sponsor engagement deck (current root index.html)
+## Live presenting with reveal.js
 
-The **public** GitHub Pages site for synvert xgeeks' KCD Sponsor → Business Development plan.
+For any deck, the [convert-to-revealjs skill](.claude/skills/convert-to-revealjs/SKILL.md) produces
+a reveal.js version in `<slug>/revealjs/index.html` — keyboard/touch navigation, speaker notes
+(`S` key), and PDF export via `decktape`. The skill preserves the full design system verbatim
+(tokens, component classes, fonts) and only replaces the scroll-snap navigation shell.
+
+- Output: `<slug>/revealjs/index.html` (self-contained, CDN-only, no build step)
+- Speaker notes: `<aside class="notes">` per slide, viewed via the `S` key speaker view
+- PDF: `npx decktape reveal "http://localhost:8765/index.html" "<slug>.pdf" --size 1520x900`
+- Preview requires an HTTP server (not `file://`) for the speaker view `postMessage` API
+
+## KCD sponsor engagement deck (`kcd-sponsor-engagement/`)
+
+The **public** GitHub Pages site for synvert xgeeks' KCD Sponsor → Business Development plan,
+at `<pages-url>/kcd-sponsor-engagement/`. The deck lives in its own subfolder; the root `index.html`
+is the gallery.
 
 Pure **static site — no build step, no dependencies, no `package.json`, no framework.**
 Hand-written HTML/CSS/vanilla JS plus aggregated, role-based markdown. Edit a file, commit,
@@ -83,31 +101,34 @@ PII / pricing / contract content regardless.
 ## File map
 
 ```
-index.html          Slide-deck presentation (primary leadership view) — SELF-CONTAINED
-analysis.html       Document view (full long-form plan) — uses shared assets/
-assets/styles.css   Stylesheet for analysis.html ONLY (document view)
-assets/nav.js       Sticky-TOC active-section highlighter for analysis.html ONLY
-account-playbook.md  Public, redacted account playbook (roles only)
-action-plan.md       Engagement action plan (public, aggregated)
-bd-crm-spec.md       BD CRM spec — labels, fields, seed sources, CSV template
-methodology.md       Inputs, research, sources, method
+kcd-sponsor-engagement/
+  index.html           Slide-deck presentation (primary leadership view) — SELF-CONTAINED
+  analysis.html        Document view (full long-form plan) — uses kcd-sponsor-engagement/assets/
+  assets/styles.css    Stylesheet for analysis.html ONLY (legacy — new decks inline this)
+  assets/nav.js        Sticky-TOC highlighter for analysis.html ONLY (legacy — new decks inline this)
+  account-playbook.md  Public, redacted account playbook (roles only)
+  action-plan.md       Engagement action plan (public, aggregated)
+  bd-crm-spec.md       BD CRM spec — labels, fields, seed sources, CSV template
+  methodology.md       Inputs, research, sources, method
+index.html             Root gallery — .deck-card links to every deck
 .github/workflows/pages.yml  Pages deploy (push to main → live)
-private/             🔒 git-ignored — never published
+private/               🔒 git-ignored — never published
 ```
 
-## The two pages are different design systems — don't cross-contaminate
+## The two files per deck are different design systems — don't cross-contaminate
 
 This is the easiest mistake to make. They share **no** CSS and have **separate** variable sets:
 
-| | [index.html](index.html) | [analysis.html](analysis.html) |
+| | `index.html` (deck) | `analysis.html` (document view) |
 |---|---|---|
-| CSS/JS | Inline `<style>` + `<script>`, fully self-contained | External [assets/styles.css](assets/styles.css) + [assets/nav.js](assets/nav.js) |
+| CSS/JS | Inline `<style>` + `<script>`, fully self-contained | Inline too (new decks) · legacy KCD deck uses external `assets/` |
 | Theme | Dark only (`--bg:#03161a`) | Light + dark via `prefers-color-scheme` |
 | Fonts | Google Fonts: Jost / Fraunces / DM Mono | System fonts (`-apple-system`, serif body) |
 | Layout | Full-viewport scroll-snap slides (`.slide`/`.frame`) | Sticky-TOC + content column (`.layout`/`.toc`/`.content`) |
 
 When editing one, keep its conventions; don't copy a class, variable, or font from the other.
-Edits to `assets/` affect `analysis.html` only — `index.html` won't change.
+For the legacy `kcd-sponsor-engagement/` deck, edits to `assets/` affect its `analysis.html`
+only — `index.html` won't change. For all other decks, CSS/JS is inline in both files.
 
 ## Brand
 
@@ -197,8 +218,10 @@ top-rule. Two-track colour code is consistent throughout: **warm = Track A / org
 ## Conventions to match
 
 - `analysis.html` sections are `<section id="...">` under `.content`; the TOC links to those IDs
-  and [assets/nav.js](assets/nav.js) (IntersectionObserver) highlights the active one. Add a new
-  section by adding both the `<section id>` and its matching `.toc a[href="#id"]` entry.
+  and an IntersectionObserver script highlights the active one. In new self-contained decks this
+  script is inline in the file; in the legacy `kcd-sponsor-engagement/` deck it lives in
+  `assets/nav.js`. Add a new section by adding both the `<section id>` and its matching
+  `.toc a[href="#id"]` entry.
 - Keep `<title>` and `<meta name="description">` accurate when content changes materially.
 - Aggregated numbers and "company + role" phrasing only — see the PII rule above.
 

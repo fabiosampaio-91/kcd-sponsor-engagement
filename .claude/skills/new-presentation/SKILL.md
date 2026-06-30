@@ -232,6 +232,20 @@ Tell the user:
 - What still needs filling in (slide body content, analysis sections, real slide count, gallery/README description if left as placeholder)
 - Commit & push when ready — GitHub Pages auto-deploys to `<pages-url>/<slug>/`
 
+### 7. Ask about reveal.js
+
+After reporting, ask:
+
+> "Would you like a reveal.js version of this deck for live presenting — with arrow-key navigation, speaker notes, and PDF export?"
+
+If the user says **no**, stop here.
+
+If the user says **yes**, hand off to the **`convert-to-revealjs` agent** with this exact message so the audience profile is not lost:
+
+> "Convert `<slug>/index.html` to reveal.js. Profile: **<Profile>**. Slug: `<slug>`."
+
+The convert agent uses the profile to tune speaker-note tone without re-inferring it from the source.
+
 ## Design system quick reference
 
 All component classes are already in the template. Pick from these; don't invent new ones:

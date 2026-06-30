@@ -52,6 +52,8 @@ _template/                  Blank deck — copy to start a new presentation
 <deck-slug>/                Each folder is one self-contained presentation
   index.html                  The deck
   analysis.html               Long-form companion
+  revealjs/                   Optional — reveal.js version for live presenting
+    index.html
 index.html                  Root gallery — links to every deck
 CLAUDE.md                   Working rules / design system for editing this repo
 ```
@@ -62,7 +64,8 @@ CLAUDE.md                   Working rules / design system for editing this repo
 
 **Easiest — ask Claude Code:** _"create a new <topic> presentation"_ runs the
 [`new-presentation`](.claude/skills/new-presentation/SKILL.md) skill, which scaffolds both files,
-adds the gallery card, updates this table, and opens the deck.
+adds the gallery card, updates this table, opens the deck, and at the end asks if you want a
+reveal.js version for live presenting.
 
 **By hand:**
 
@@ -74,6 +77,13 @@ adds the gallery card, updates this table, and opens the deck.
 6. Commit & push — it deploys automatically.
 
 > **Never** move CSS/JS out of the inline `<style>`/`<script>` blocks — each deck must open standalone.
+
+## 🎤 Live presenting
+
+_"convert [deck] to reveal.js"_ runs the [`convert-to-revealjs`](.claude/skills/convert-to-revealjs/SKILL.md)
+skill. It produces `<slug>/revealjs/index.html` — same design system, keyboard/touch navigation,
+speaker notes (`S` key), and optional PDF export via `decktape`. Nothing is published to Pages from
+the `revealjs/` subfolder unless you explicitly link to it.
 
 ---
 
